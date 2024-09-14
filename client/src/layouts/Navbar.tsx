@@ -1,71 +1,76 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Code, Shield, Home, Mail, UserPlus, Menu, X } from 'lucide-react';
 
-const NAV_ITEMS: string[] = ["home", "about", "contact" , "signup"];
+
+const NAV_ITEMS = [
+  { name: "Home", icon: Home, path: '/' },
+  { name: "About", icon: Shield, path: '/about' },
+  { name: "Learn", icon: Code, path: '/learn' },
+  { name: "Contact", icon: Mail, path: '/contact' },
+  { name: "Signup", icon: UserPlus, path: '/signup' }
+];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
+  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
 
   return (
-    <nav className="bg-slate-600 text-white shadow-md">
+    <nav className="bg-gray-900 text-white shadow-md">
       <div className="container mx-auto flex justify-between items-center p-4">
-        {/* Webisite Name */}
-       <Link to={'/'}>
-       <h1 className="text-xl font-bold font-serif">VuLearn</h1>
-       </Link>
-
-        {/* For mobile */}
-        <div className="block md:hidden">
+        <div className="text-xl font-bold font-mono flex items-center">
+          <NavLink to="/" className="hover:text-orange-400 flex items-center">
+            <span className="text-orange-400">&lt;</span>VuLearn<span className="text-orange-400">&gt;</span>
+          </NavLink>
+        </div>
+        {/* For mobile menu button */}
+        <div className="block lg:hidden">
           <button
             onClick={toggleMobileMenu}
             className="focus:outline-none text-2xl"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
-            <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
+            {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
-
-        {/* For desktop */}
-        <div className="hidden md:flex space-x-8">
-          {NAV_ITEMS.map(item => (
+        {/* For desktop navigation */}
+        <div className="hidden lg:flex space-x-8">
+          {NAV_ITEMS.map((item) => (
             <NavLink
-              key={item}
-              to={item === "home" ? "/" : `/${item.toLowerCase()}`}
-              className="text-orange-200 font-serif hover:text-orange-400 font-bold"
+              key={item.name}
+              to={item.path}
+              className="text-gray-300 font-mono font-semibold hover:text-orange-400 flex items-center group transition-all duration-300"
             >
-              {item.toUpperCase()}
+              <item.icon className="mr-2 group-hover:animate-pulse" size={18} />
+              {item.name}
             </NavLink>
           ))}
         </div>
-
-        {/* Mobile navigation */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-slate-600 p-4 flex flex-col space-y-4 md:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="self-end text-gray-300 hover:text-gray-100"
-              aria-label="Close menu"
-            >
-              <FontAwesomeIcon icon={faTimes} className="text-2xl" />
-            </button>
-            {NAV_ITEMS.map(item => (
-              <NavLink
-                key={item}
-                to={item === "home" ? "/" : `/${item.toLowerCase()}`}
-                className="block text-center text-orange-200 font-semibold hover:text-orange-400 font-serif"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.toUpperCase()}
-              </NavLink>
-            ))}
-          </div>
-        )}
       </div>
+      {/* Mobile navigation */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-95 p-4 flex flex-col space-y-4 lg:hidden z-50">
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="self-end text-gray-300 hover:text-gray-100"
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+          {NAV_ITEMS.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.name === "Home" ? "/" : `/${item.name.toLowerCase().replace(' ', '-')}`}
+              className="text-center text-gray-300 font-mono font-semibold hover:text-orange-400 flex  items-center justify-center space-x-2 group"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <item.icon className="group-hover:animate-pulse" size={24} />
+              <span>{item.name}</span>
+            </NavLink>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
