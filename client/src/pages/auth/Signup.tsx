@@ -1,20 +1,23 @@
 import React, { useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faUser, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 interface FormData {
   email: string;
   password: string;
+  username: string;
 }
 
 const Signup: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     email: '',
     password: '',
+    username: '',
   });
-
+  
+  const [showPassword, setShowPassword] = useState(false); 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -22,8 +25,12 @@ const Signup: React.FC = () => {
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email:', formData.email, 'Password:', formData.password);
+    console.log('Email:', formData.email, 'Password:', formData.password, 'UserName:', formData.username);
   }, [formData]);
+
+  const toggleShowVisibility = ()=>{
+    setShowPassword(()=>!showPassword);
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 p-4 font-serif">
@@ -34,6 +41,18 @@ const Signup: React.FC = () => {
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="space-y-4">
+            <div className="relative">
+              <FontAwesomeIcon icon={faUser} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
+              <input
+                name="username"
+                type="text"
+                required
+                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                placeholder="Enter user name"
+                value={formData.username}
+                onChange={handleInputChange}
+              />
+            </div>
             <div className="relative">
               <FontAwesomeIcon icon={faEnvelope} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
               <input
@@ -50,13 +69,20 @@ const Signup: React.FC = () => {
               <FontAwesomeIcon icon={faLock} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
               <input
                 name="password"
-                type="password"
+                type={showPassword ? 'text' : 'password'} 
                 required
-                className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                 placeholder="Enter password"
                 value={formData.password}
                 onChange={handleInputChange}
               />
+              <button
+                type="button"
+                onClick={toggleShowVisibility}
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400"
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </button>
             </div>
           </div>
           <button

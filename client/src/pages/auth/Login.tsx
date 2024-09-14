@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLock ,faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 interface FormData {
@@ -15,6 +15,8 @@ export default function Login() {
     password: '',
   });
 
+  const[showPassword,setShowPassword] = useState(false);
+
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -24,6 +26,11 @@ export default function Login() {
     e.preventDefault();
     console.log('Email:', formData.email, 'Password:', formData.password);
   }, [formData]);
+
+
+  const toggleShowVisibility = ()=>{
+    setShowPassword(()=>!showPassword);
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 p-4 font-serif">
@@ -50,13 +57,20 @@ export default function Login() {
               <FontAwesomeIcon icon={faLock} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
               <input
                 name="password"
-                type="password"
+                type={showPassword ? 'text':'password'}
                 required
                 className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                 placeholder="Enter password"
                 value={formData.password}
                 onChange={handleInputChange}
               />
+              <button
+               type="button" 
+               onClick={toggleShowVisibility}
+               className="absolute right-3 top-1/2 transform  -translate-y-1/2 text-gray-400"
+               >
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+              </button>
             </div>
           </div>
           <div className="flex items-center justify-between">
