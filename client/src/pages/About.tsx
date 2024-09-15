@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi'; 
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 interface FAQItemProps {
   question: string;
@@ -29,23 +29,23 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 text-white py-4">
+    <div className="border-b border-gray-700 py-4">
       <button
-        className="flex justify-between items-center w-full text-left text-white"
+        className="flex justify-between items-center w-full text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="font-medium">{question}</span>
+        <span className="font-medium text-gray-300">{question}</span>
         <span className="ml-6 flex-shrink-0">
           {isOpen ? (
-            <FiChevronUp className="h-6 w-6" /> 
+            <FiChevronUp className="h-6 w-6 text-orange-400" /> 
           ) : (
-            <FiChevronDown className="h-6 w-6" /> 
+            <FiChevronDown className="h-6 w-6 text-orange-400" /> 
           )}
         </span>
       </button>
       {isOpen && (
         <div className="mt-2">
-          <p className="text-gray-200">{answer}</p>
+          <p className="text-gray-400">{answer}</p>
         </div>
       )}
     </div>
@@ -54,9 +54,9 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
 
 const About: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-600 text-white font-serif p-8">
+    <div className="min-h-screen bg-gray-900 text-gray-300 font-serif p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center">About XSS Learning</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center text-orange-400 font-mono">&lt;About XSS Learning&gt;</h1>
         
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Our Promise</h2>
