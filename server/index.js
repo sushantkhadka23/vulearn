@@ -1,10 +1,11 @@
-const express = require('express')
+import express from 'express'
+import connectToDatabase from './config/dbconfig.js'
+import dotenv from 'dotenv';
+
+dotenv.config(); 
 const app = express()
-const connectToDatabase = require('./config/dbconfig');
-require('dotenv').config();
-
-
 connectToDatabase();
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
