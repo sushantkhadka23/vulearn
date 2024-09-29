@@ -10,7 +10,7 @@ import Login from "../pages/auth/Login";
 import Recovery from "../pages/auth/Recovery";
 import Layouts from "../layouts/Layouts";
 import Home from "../pages/Home";
-import Learn from "../layouts/Learn";
+import Learn from "../pages/Learn";
 
 export default function AppRouter() {
   return (

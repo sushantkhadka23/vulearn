@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Code, Shield, Home, Mail, UserPlus, Menu, X } from 'lucide-react';
+import { Code, Shield, Home, Mail, UserPlus, Menu, X } from "lucide-react";
 
+interface NavItemProps {
+  name: string;
+  icon: React.ElementType;
+  path: string;
+}
 
-const NAV_ITEMS = [
-  { name: "Home", icon: Home, path: '/' },
-  { name: "About", icon: Shield, path: '/about' },
-  { name: "Learn", icon: Code, path: '/learn' },
-  { name: "Contact", icon: Mail, path: '/contact' },
-  { name: "Signup", icon: UserPlus, path: '/signup' }
+const NAV_ITEMS: NavItemProps[] = [
+  { name: "Home", icon: Home, path: "/" },
+  { name: "About", icon: Shield, path: "/about" },
+  { name: "Learn", icon: Code, path: "/learn" },
+  { name: "Contact", icon: Mail, path: "/contact" },
+  { name: "Signup", icon: UserPlus, path: "/signup" },
 ];
 
 export default function Navbar() {
@@ -20,7 +25,8 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="text-xl font-bold font-mono flex items-center">
           <NavLink to="/" className="hover:text-orange-400 flex items-center">
-            <span className="text-orange-400">&lt;</span>VuLearn<span className="text-orange-400">&gt;</span>
+            <span className="text-orange-400">&lt;</span>VuLearn
+            <span className="text-orange-400">&gt;</span>
           </NavLink>
         </div>
         {/* For mobile menu button */}
@@ -50,10 +56,10 @@ export default function Navbar() {
       </div>
       {/* Mobile navigation */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-95 p-4 flex flex-col space-y-4 lg:hidden z-50">
+        <div className="fixed inset-0 bg-gray-900 bg-opacity-95 p-4 flex flex-col justify-center items-center space-y-4 lg:hidden z-50">
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="self-end text-gray-300 hover:text-gray-100"
+            className="absolute top-4 right-4 text-gray-300 hover:text-gray-100"
             aria-label="Close menu"
           >
             <X size={24} />
@@ -61,8 +67,8 @@ export default function Navbar() {
           {NAV_ITEMS.map((item) => (
             <NavLink
               key={item.name}
-              to={item.name === "Home" ? "/" : `/${item.name.toLowerCase().replace(' ', '-')}`}
-              className="text-center text-gray-300 font-mono font-semibold hover:text-orange-400 flex  items-center justify-center space-x-2 group"
+              to={item.path}
+              className="text-center text-gray-300 font-mono font-semibold hover:text-orange-400 flex items-center justify-center space-x-2 group"
               onClick={() => setMobileMenuOpen(false)}
             >
               <item.icon className="group-hover:animate-pulse" size={24} />
