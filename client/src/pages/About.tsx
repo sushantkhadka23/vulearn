@@ -6,7 +6,7 @@ interface FAQItemProps {
   answer: string;
 }
 
-const faqItems = [
+const faqItems:FAQItemProps[] = [
   {
     question: "What is XSS?",
     answer: "XSS (Cross-Site Scripting) is a type of security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. Our platform teaches you how to identify, exploit, and prevent these vulnerabilities."
@@ -32,14 +32,11 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
     <div className="border-b border-gray-700 py-4">
       <button
         className="flex justify-between items-center w-full text-left"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+        onClick={() => setIsOpen(!isOpen)} >
         <span className="font-medium text-gray-300">{question}</span>
         <span className="ml-6 flex-shrink-0">
-          {isOpen ? (
-            <FiChevronUp className="h-6 w-6 text-orange-400" /> 
-          ) : (
-            <FiChevronDown className="h-6 w-6 text-orange-400" /> 
+          {isOpen ? ( <FiChevronUp className="h-6 w-6 text-orange-400" /> 
+          ) : ( <FiChevronDown className="h-6 w-6 text-orange-400" /> 
           )}
         </span>
       </button>

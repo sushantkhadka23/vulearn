@@ -9,6 +9,7 @@ export default function Contact() {
             <div>
               <label className="block text-sm font-medium text-gray-400">First Name</label>
               <input
+              required
                 type="text"
                 className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm p-3 focus:ring-orange-500 focus:border-orange-500 text-gray-300"
               />
@@ -16,6 +17,7 @@ export default function Contact() {
             <div>
               <label className="block text-sm font-medium text-gray-400">Last Name</label>
               <input
+                required
                 type="text"
                 className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm p-3 focus:ring-orange-500 focus:border-orange-500 text-gray-300"
               />
@@ -24,6 +26,7 @@ export default function Contact() {
           <div>
             <label className="block text-sm font-medium text-gray-400">Email</label>
             <input
+            required
               type="email"
               className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm p-3 focus:ring-orange-500 focus:border-orange-500 text-gray-300"
             />
@@ -31,6 +34,7 @@ export default function Contact() {
           <div>
             <label className="block text-sm font-medium text-gray-400">Message</label>
             <textarea
+            required
               className="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm p-3 focus:ring-orange-500 focus:border-orange-500 text-gray-300"
               rows={4}
             ></textarea>
