@@ -16,6 +16,8 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
+
+       
         <Route path="/" element={<Layouts />}>
 
           <Route index element={<Home />} />
@@ -26,6 +28,8 @@ export default function AppRouter() {
           <Route path="/login" element={<Login />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/recovery" element={<Recovery />} />
+
+
         </Route>
 
         {/* Catch all for 404 */}
