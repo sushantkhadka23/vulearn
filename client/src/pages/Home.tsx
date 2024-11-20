@@ -23,7 +23,9 @@ const Home: React.FC = () => {
 
       {/* Simple Example Section */}
       <section className="py-16 bg-slate-800 text-center font-sans">
-        <h2 className="text-3xl font-bold mb-8 font-serif">XSS Explained Simply</h2>
+        <h2 className="text-3xl font-bold mb-8 font-serif">
+          XSS Explained Simply
+        </h2>
         <div className="max-w-3xl mx-auto bg-slate-700 p-6 rounded-lg shadow-lg text-left">
           <h3 className="text-xl font-bold mb-4">A Basic XSS Example</h3>
           <p className="mb-4">Imagine a website with a simple greeting form:</p>

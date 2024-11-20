@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
+
 import logo from '../assets/logo.png';
+import Navbar from "../pract/Navbar";
 
 export default function Header() {
   return (

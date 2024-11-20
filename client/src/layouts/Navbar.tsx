@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Code, Shield, Home, Mail, UserPlus, Menu, X } from "lucide-react";
+import {  Menu, X } from "lucide-react";
+import NAV_ITEMS from "../types/navbarItems";
 
-interface NavItemProps {
-  name: string;
-  icon: React.ElementType;
-  path: string;
-}
 
-const NAV_ITEMS: NavItemProps[] = [
-  { name: "Home", icon: Home, path: "/" },
-  { name: "About", icon: Shield, path: "/about" },
-  { name: "Learn", icon: Code, path: "/learn" },
-  { name: "Contact", icon: Mail, path: "/contact" },
-  { name: "Signup", icon: UserPlus, path: "/signup" },
-];
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  `transition-colors duration-300 font-semibold ${
+    isActive
+      ? "text-fg dark:text-bg border-b-2 border-bg dark:border-fg"
+      : "text-fg/60 dark:text-bg/60 hover:text-fg hover:border-b-2 hover:border-bg dark:hover:text-bg dark:hover:border-fg"
+  }`;
+
+
 
 export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);

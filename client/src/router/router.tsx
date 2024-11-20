@@ -27,7 +27,7 @@ export default function AppRouter() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/learn" element={<Learn />} />
-          <Route path="/recovery" element={<Recovery />} />
+          <Route path="/login/recovery" element={<Recovery />} />
 
 
         </Route>

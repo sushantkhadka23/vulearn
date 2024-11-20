@@ -1,38 +1,47 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Moon, Sun } from "lucide-react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-import { RootState, AppDispatch } from "../states/store";
-import { themeToggle } from "../states/theme/themeSlice";
+import { AppDispatch, RootState } from "../states/store"; 
+import { getKey, setKey } from "../utils/localStorage";
 
 export default function ThemeToggle() {
-  // Use useSelector to get the current theme state
-  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
-  const dispatch: AppDispatch = useDispatch();
+  // Use Redux selector to get the current theme state (isDarkMode)
+  const isDarkMode:boolean = useSelector((state: RootState) => state.theme.isDarkMode);
+  const dispatch: AppDispatch = useDispatch(); // Get the dispatch function from Redux
 
+  // Load the theme from localStorage on the initial render
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
+    // Use getKey to retrieve the saved theme from localStorage
+    const savedTheme = getKey("theme");
+    // If the saved theme is "dark", update the Redux state and add the dark class to the document
     if (savedTheme === "dark") {
-      dispatch(themeToggle());
-      document.documentElement.classList.add("dark");
-    }
-    // Ensure light mode is set
-     else {
-      document.documentElement.classList.remove("dark"); 
+      dispatch(toggleTheme()); // Dispatch the action to toggle the theme to dark
+      document.documentElement.classList.add("dark"); // Add the "dark" class to the root element
     }
   }, [dispatch]);
 
+  // Function to handle the toggle button click
   const handleToggle = () => {
-    dispatch(themeToggle());
-    // Toggle the dark class on the document element
-    document.documentElement.classList.toggle("dark", !isDarkMode);
-    // Update localStorage with the new theme
-    localStorage.setItem("theme", isDarkMode ? "light" : "dark");
+    // Dispatch the toggleTheme action to update the theme state in Redux
+    dispatch(toggleTheme());
+    // Determine the new theme state after dispatching the action
+    const newIsDarkMode = !isDarkMode; // If it was dark, set it to light and vice versa
+    // Toggle the "dark" class on the document element based on the new theme state
+    document.documentElement.classList.toggle("dark", newIsDarkMode);
+    // Update localStorage with the new theme value ("dark" or "light")
+    setKey("theme", newIsDarkMode ? "dark" : "light");
   };
 
+  // Render the button to toggle the theme
   return (
-    <button onClick={handleToggle} className="text-lt-fore dark:text-dk-fore">
+    <button onClick={handleToggle} className="text-2xl p-2 mr-2">
+      {/* Display the Sun icon if in dark mode, otherwise display the Moon icon */}
       {isDarkMode ? <Sun /> : <Moon />}
     </button>
   );
 }
+function toggleTheme(): any {
+  throw new Error("Function not implemented.");
+}
+
