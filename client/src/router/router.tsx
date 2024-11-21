@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Pages and Layouts
@@ -16,26 +15,21 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-
-       
         <Route path="/" element={<Layouts />}>
-
           <Route index element={<Home />} />
 
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/learn" element={<Learn />} />
-          <Route path="/login/recovery" element={<Recovery />} />
-
-
         </Route>
+        {/* account interact pages */}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/login/recovery" element={<Recovery />} />
 
         {/* Catch all for 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
-};
-
+}

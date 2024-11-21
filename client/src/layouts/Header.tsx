@@ -1,32 +1,24 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom"; 
+import Navbar from "../components/Navbar";
 
-import logo from '../assets/logo.png';
-import Navbar from "../pract/Navbar";
+const website_name = `<VuLearn/>`;
 
 export default function Header() {
   return (
-    <header className="bg-gray-800 text-white shadow-lg">
+    <header className="bg-bg text-fg">
       <div className="container mx-auto flex justify-between items-center p-4">
-        {/* Logo and website name */}
-        <div className="flex items-center space-x-3">
-          {/* Logo */}
-          <Link to="/">
-            <img
-            src={logo}
-              alt="Logo"
-              className="h-12 w-12"
-            />
-          </Link>
-          {/* Website Name */}
-          <Link to="/">
-            <h1 className="text-2xl font-bold font-serif hover:text-orange-400">
-              XSS Learn
-            </h1>
-          </Link>
-        </div>
-        {/* Navbar */}
+        {/* Website name (clickable link to home) */}
+        <NavLink 
+          to="/" 
+          className="text-xl font-semibold hover:text-fg/70 transition-colors duration-300 whitespace-nowrap"
+        >
+          <span className="font-mono">{website_name}</span>
+        </NavLink>
+        {/* Navbar component (handles mobile and desktop navigation) */}
         <Navbar />
       </div>
     </header>
   );
 }
+
+

@@ -1,46 +1,51 @@
-import { Link } from 'react-router-dom';
-import { Mail, Code } from 'lucide-react';
+import { NavLink } from "react-router-dom";
+import NAVITEMS from "../types/navbarItems";
 
-const FOOTER_ITEMS = [
-  { name: "Learn", icon: Code, path: '/learn' },
-  { name: "Contact", icon: Mail, path: '/contact' },
-];
+const website_name = `<VuLearn/>`;
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `transition-colors duration-300 font-semibold ${
+      isActive
+        ? "text-fg dark:text-bg border-b-2 border-bg dark:border-fg font-playwrite font-semibold"
+        : "text-fg/60 dark:text-bg/60 hover:text-fg hover:border-b-2 hover:border-bg dark:hover:text-bg dark:hover:border-fg font-mono"
+    }`;
+  
+
   return (
-    <footer className="bg-gray-900 text-gray-300 py-8 font-mono shadow-md">
+    <footer className="bg-bg dark:bg-fg text-fg dark:text-bg py-8 font-lato shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          {/* Logo and tagline */}
+          {/* Footer Title and Copyright */}
           <div className="text-center md:text-left mb-6 md:mb-0">
-            <Link to="/" className="text-2xl font-bold text-white flex items-center mb-2">
-              <span className="text-orange-400">&lt;</span>VuLearn<span className="text-orange-400">&gt;</span>
-            </Link>
-            <p className="text-sm">
-              Mastering web security, one vulnerability at a time.
+          <div className="text-xl font-mono font-semibold">
+            <span>{website_name}</span></div>    
+            <p className="text-lg mt-2">
+              <strong className="text-2xl font-bold font-playwrite">&copy;</strong> {currentYear} All rights reserved.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <nav className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-            {FOOTER_ITEMS.map((item) => (
-              <Link
+          {/* Navigation Links */}
+          <nav className="flex flex-wrap justify-center space-x-2 sm:space-x-4 font-bold mb-4 md:mb-0">
+            {NAVITEMS.map((item) => (
+              <NavLink
                 key={item.name}
                 to={item.path}
-                className="hover:text-orange-400 font-semibold transition-colors duration-300 flex items-center"
+                className={({ isActive }) =>
+                  `px-2 py-1 m-1 border border-transparent hover:border-bg dark:hover:border-fg rounded ${navLinkClass({ isActive })}`
+                }
               >
-                <item.icon size={16} className="mr-2" />
                 {item.name}
-              </Link>
+              </NavLink>
             ))}
           </nav>
-        </div>
 
-        {/* Footer Bottom */}
-        <div className="text-center mt-8 border-t border-gray-700 pt-4">
-          <p className="text-sm">
-            &copy; {new Date().getFullYear()} VuLearn. All rights reserved.
-          </p>
+          {/* Social Links */}
+          {/* <div className="flex justify-center">
+            <SocialLinks />
+          </div> */}
         </div>
       </div>
     </footer>

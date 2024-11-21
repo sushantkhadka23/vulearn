@@ -7,22 +7,10 @@ export default {
   theme: {
     extend: {
       colors:{
-        //orange
-        // bg:"#ff8c00",
-        // fg:"#000000",
-        //pink
-          // bg:"#c8b6ff",
+          // bg:"#FF9B61",
           // fg:"#000000",
-          //pale mint
-          bg:"#e4fde1",
-          fg:"#000000",
-          //yellow
-          // bg:"#ffe66d",
-          // fg:"#222222",
-          //white
-          // bg:"#fefefe",
-          // fg:"#000000",
-
+          bg:"#FFA600",
+          fg:"#050C15",
       },
       fontFamily:{
         'lato': ['Lato', 'sans-serif'],
