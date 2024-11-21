@@ -33,16 +33,16 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 p-4 font-serif">
-      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+    <div className="min-h-screen flex items-center justify-center bg-bg p-4 font-serif">
+      <div className="max-w-md w-full space-y-8 bg-slate-800 p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
         <div className="text-center">
-          <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Create an Account</h1>
-          <p className="text-sm text-gray-500">Join us and start your levels today!</p>
+          <h1 className="text-3xl font-extrabold text-white mb-2">Create an Account</h1>
+          <p className="text-sm text-gray-400">Join us and start your levels today!</p>
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="space-y-4">
             <div className="relative">
-              <FontAwesomeIcon icon={faUser} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
+              <FontAwesomeIcon icon={faUser} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-900" />
               <input
                 name="username"
                 type="text"
@@ -54,7 +54,7 @@ const Signup: React.FC = () => {
               />
             </div>
             <div className="relative">
-              <FontAwesomeIcon icon={faEnvelope} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
+              <FontAwesomeIcon icon={faEnvelope} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-900" />
               <input
                 name="email"
                 type="email"
@@ -66,7 +66,7 @@ const Signup: React.FC = () => {
               />
             </div>
             <div className="relative">
-              <FontAwesomeIcon icon={faLock} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
+              <FontAwesomeIcon icon={faLock} className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-900" />
               <input
                 name="password"
                 type={showPassword ? 'text' : 'password'} 
@@ -79,7 +79,7 @@ const Signup: React.FC = () => {
               <button
                 type="button"
                 onClick={toggleShowVisibility}
-                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-400"
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-900"
               >
                 <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
               </button>
@@ -98,7 +98,7 @@ const Signup: React.FC = () => {
               <div className="w-full border-t border-gray-300"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-500">Or continue with</span>
+              <span className="px-2 bg-gray-800 text-gray-500">Or continue with</span>
             </div>
           </div>
           <div className="mt-6">
@@ -108,9 +108,9 @@ const Signup: React.FC = () => {
             </button>
           </div>
         </div>
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-6 text-center text-sm text-gray-400">
           Already have an account?{' '}
-          <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500 transition duration-200">
+          <Link to="/login" className="font-medium text-blue-100 hover:text-blue-600 transition duration-200">
             Log in
           </Link>
         </p>

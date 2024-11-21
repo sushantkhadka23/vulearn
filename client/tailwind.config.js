@@ -7,10 +7,8 @@ export default {
   theme: {
     extend: {
       colors:{
-          // bg:"#FF9B61",
-          // fg:"#000000",
-          bg:"#FFA600",
-          fg:"#050C15",
+          fg:"#FAA200",
+          bg:"#010204",
       },
       fontFamily:{
         'lato': ['Lato', 'sans-serif'],

@@ -26,14 +26,14 @@ export default function WhyLearnXSS() {
   return (
     <section className="py-16 bg-bg text-fg font-serif">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-white mb-12">
+        <h2 className="text-4xl font-extrabold text-fg mb-12">
           Why Learn XSS With Us?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-slate-800 p-8 rounded-2xl shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl hover:bg-bg/70 hover:border-4 hover:border-orange-500 hover:text-white border-2 border-transparent"
+              className="bg-slate-800 p-8 rounded-2xl shadow-xl transform hover:scale-105 hover:shadow-2xl hover:bg-orange-600 hover:text-white border-2 border-transparent transition-all duration-300"
             >
               <div className="flex justify-center mb-6">
                 {feature.icon}

@@ -13,8 +13,8 @@ export default function Navbar() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `transition-colors duration-300 font-semibold ${
       isActive
-        ? "text-fg font-playwrite font-semibold"
-        : "text-fg/60 hover:text-fg font-mono"
+        ? "text-fg font-mono font-semibold"
+        : "text-fg/60 hover:text-fg font-lato"
     }`;
 
   return (

@@ -12,7 +12,7 @@ const Learn: React.FC = () => {
     const match = scriptPattern.exec(userInput.trim());
 
     if (match) {
-      alert(match[1]);  // Show the alert with user's custom message
+      alert(match[1]);  
       setFeedback("Correct! Great job!");
     } 
   };
@@ -29,11 +29,11 @@ const Learn: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-300 font-serif p-8">
+    <div className="min-h-screen bg-bg text-fg font-serif p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center text-orange-400 font-mono">&lt;XSS Learning&gt;</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center text-fg font-mono">&lt;XSS Learning/&gt;</h1>
         
-        <div className="bg-gray-800 rounded-lg shadow-xl p-8">
+        <div className="bg-gray-800 text-white rounded-lg shadow-xl p-8">
           <h2 className="text-2xl font-semibold mb-4 text-orange-300">
             Level {levels[0].id}: {levels[0].title}
           </h2>
