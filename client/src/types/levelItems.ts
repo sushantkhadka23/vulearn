@@ -1,5 +1,3 @@
-
-
 interface LevelProps {
     id: number;
     title: string;

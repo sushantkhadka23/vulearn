@@ -9,10 +9,9 @@ export default function Footer() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `transition-colors duration-300 font-semibold ${
       isActive
-        ? "text-fg dark:text-bg border-b-2 border-bg dark:border-fg font-playwrite font-semibold"
-        : "text-fg/60 dark:text-bg/60 hover:text-fg hover:border-b-2 hover:border-bg dark:hover:text-bg dark:hover:border-fg font-mono"
+        ? "text-fg font-serif font-semibold"
+        : "text-fg/60 hover:text-fg font-serif"
     }`;
-  
 
   return (
     <footer className="bg-bg dark:bg-fg text-fg dark:text-bg py-8 font-lato shadow-md">

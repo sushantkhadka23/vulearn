@@ -13,19 +13,17 @@ const Home: React.FC = () => {
           Discover Cross-Site Scripting (XSS) from the basics. Understand web
           vulnerabilities and how to protect against them.
         </p>
+
         <Link
           to="/signup"
-          className="bg-orange-700 text-white font-semibold py-3 px-6 rounded-full hover:bg-orange-600 transition"
+          className="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full ring-2 ring-white hover:bg-white hover:text-orange-600 transition-all duration-300"
         >
           Start Learning Now
         </Link>
       </section>
 
       {/* Features Section */}
-       <WhyLearnXSS />
-
-
-
+      <WhyLearnXSS />
     </div>
   );
 };

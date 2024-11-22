@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Pages and Layouts
 import About from "../pages/About";
-import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
 import Signup from "../pages/auth/Signup";
 import Login from "../pages/auth/Login";
@@ -19,7 +18,6 @@ export default function AppRouter() {
           <Route index element={<Home />} />
 
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/learn" element={<Learn />} />
         </Route>
         {/* account interact pages */}
