@@ -12,11 +12,11 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
-    const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `transition-colors duration-300 font-semibold ${
       isActive
-        ? "text-fg font-serif font-semibold"
-        : "text-fg/60 hover:text-fg font-serif"
+        ? "text-txt font-serif font-semibold"
+        : "text-txt/60 hover:text-txt font-serif"
     }`;
 
   return (
@@ -25,13 +25,10 @@ export default function Navbar() {
       <div className="md:hidden flex items-center w-full">
         <div className="flex-grow"></div>
         {/* Login /> */}
-        <Link
-          to="/login"
-          className="mr-4"
-          >
+        <Link to="/login" className="mr-4 text-txt">
           <LogInIcon size={25} />
         </Link>
-        <button onClick={toggleMenu} className="text-2xl p-2 z-50">
+        <button onClick={toggleMenu} className="text-2xl p-2 z-50 text-txt">
           {isOpen ? <X /> : <AlignRight />}
         </button>
       </div>

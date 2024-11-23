@@ -3,7 +3,7 @@ import WhyLearnXSS from "../components/WhyLearnXss";
 
 const Home: React.FC = () => {
   return (
-    <div className="w-full min-h-screen bg-bg text-fg">
+    <div className="w-full min-h-screen bg-bg text-slate-950">
       {/* Hero Section */}
       <section className="flex flex-col justify-center items-center text-center py-20">
         <h1 className="text-5xl font-bold font-serif mb-4">

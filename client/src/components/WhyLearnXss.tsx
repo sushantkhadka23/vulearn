@@ -24,9 +24,9 @@ const features: WhyLearnXssProps[] = [
 
 export default function WhyLearnXSS() {
   return (
-    <section className="py-16 bg-bg text-fg font-serif">
+    <section className="py-16 bg-bg text-slate-950 font-serif">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-fg mb-12">
+        <h2 className="text-4xl font-extrabold mb-12">
           Why Learn XSS With Us?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

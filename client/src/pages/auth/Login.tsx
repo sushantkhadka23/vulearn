@@ -33,7 +33,7 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-bg p-4 font-serif">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-900 p-4 font-serif">
       <div className="max-w-md w-full space-y-8 bg-slate-800 p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
         <div className="text-center">
           <h1 className="text-3xl font-extrabold text-white mb-2">Welcome Back</h1>

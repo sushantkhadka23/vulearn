@@ -9,18 +9,20 @@ export default function Footer() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `transition-colors duration-300 font-semibold ${
       isActive
-        ? "text-fg font-serif font-semibold"
-        : "text-fg/60 hover:text-fg font-serif"
+        ? "text-txt font-serif font-semibold"
+        : "text-txt/60 hover:text-txt font-serif"
     }`;
 
   return (
-    <footer className="bg-bg dark:bg-fg text-fg dark:text-bg py-8 font-lato shadow-md">
+    <footer className="bg-bg dark:bg-fg text-txt dark:text-bg py-8 font-lato shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Footer Title and Copyright */}
           <div className="text-center md:text-left mb-6 md:mb-0">
-          <div className="text-xl font-mono font-semibold">
-            <span>{website_name}</span></div>    
+          <div className="text-xl font-mono font-semibold text-fg hover:text-fg/70">
+          <span>{website_name}</span></div>    
+
+         
             <p className="text-lg mt-2">
               <strong className="text-2xl font-bold font-playwrite">&copy;</strong> {currentYear} All rights reserved.
             </p>
@@ -40,11 +42,6 @@ export default function Footer() {
               </NavLink>
             ))}
           </nav>
-
-          {/* Social Links */}
-          {/* <div className="flex justify-center">
-            <SocialLinks />
-          </div> */}
         </div>
       </div>
     </footer>
