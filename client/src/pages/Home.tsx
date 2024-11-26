@@ -15,8 +15,8 @@ const Home: React.FC = () => {
         </p>
 
         <Link
-          to="/signup"
-          className="bg-orange-600 text-white font-semibold py-3 px-6 rounded-full ring-2 ring-white hover:bg-white hover:text-orange-600 transition-all duration-300"
+          to="/learn"
+          className="bg-white text-fg font-semibold py-3 px-6 rounded-full ring-2 ring-orange-500 hover:ring-orange-700 hover:bg-fg hover:text-white transition-all duration-300"
         >
           Start Learning Now
         </Link>
@@ -24,6 +24,7 @@ const Home: React.FC = () => {
 
       {/* Features Section */}
       <WhyLearnXSS />
+
     </div>
   );
 };

@@ -30,7 +30,7 @@ const Learn: React.FC = () => {
     <div className="min-h-screen bg-bg text-fg font-serif p-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-8 text-center text-fg font-mono">
-          &lt;XSS Learning/&gt;
+    XSS Learning
         </h1>
 
         <div className="bg-gray-800 text-white rounded-lg shadow-xl p-8">

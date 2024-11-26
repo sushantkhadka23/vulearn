@@ -5,9 +5,9 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen bg-bg text-txt font-serif p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center text-txt font-mono">
-          &lt;About XSS Learning/&gt;
-        </h1>
+        {/* <h1 className="text-4xl font-bold mb-8 text-center text-txt font-mono">
+
+        </h1> */}
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Our Promise</h2>

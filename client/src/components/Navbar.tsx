@@ -2,8 +2,6 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { AlignRight, X } from "lucide-react";
 import NAVITEMS from "../types/navbarItems";
-import { Link } from "react-router-dom";
-import { LogInIcon } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -24,10 +22,7 @@ export default function Navbar() {
       {/* Mobile navigation */}
       <div className="md:hidden flex items-center w-full">
         <div className="flex-grow"></div>
-        {/* Login /> */}
-        <Link to="/login" className="mr-4 text-txt">
-          <LogInIcon size={25} />
-        </Link>
+
         <button onClick={toggleMenu} className="text-2xl p-2 z-50 text-txt">
           {isOpen ? <X /> : <AlignRight />}
         </button>
@@ -65,15 +60,7 @@ export default function Navbar() {
             </NavLink>
           ))}
         </div>
-        <div className="flex items-center space-x-4">
-          {/* Login Button */}
-          <Link
-            to="/login"
-            className="bg-orange-600 text-white font-semibold py-2 px-4 rounded-full ring-2 ring-white hover:bg-white hover:text-orange-600 transition-all duration-300 font-mono"
-          >
-            Login
-          </Link>
-        </div>
+
       </div>
     </nav>
   );
