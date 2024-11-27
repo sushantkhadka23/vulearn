@@ -1,100 +1,98 @@
-import React, { useState } from "react";
-import levels from "../types/levelItems";
+import { 
+  Gamepad2, 
+  BookOpen, 
+  FlaskConical,
+  ShieldAlert,
+} from "lucide-react";
 
-const Learn: React.FC = () => {
-  const [userInput, setUserInput] = useState("");
-  const [feedback, setFeedback] = useState("");
+const learningPaths = [
+  {
+    title: "Interactive Challenges",
+    icon: <Gamepad2 size={32} className="text-purple-500 group-hover:text-white transition-all duration-300" />,
+    description: "Learn by doing! Practice with real-world scenarios in our safe, controlled environment.",
+    features: ["Hands-on exercises", "Immediate feedback", "Progressive difficulty"],
+    color: "from-purple-500 to-purple-600",
+    buttonText: "Start Challenges"
+  },
+  {
+    title: "Documentation & Guides",
+    icon: <BookOpen size={32} className="text-blue-500 group-hover:text-white transition-all duration-300" />,
+    description: "Comprehensive guides and documentation covering all aspects of XSS vulnerabilities.",
+    features: ["Detailed explanations", "Best practices", "Security standards"],
+    color: "from-blue-500 to-blue-600",
+    buttonText: "Read Guides"
+  },
+  {
+    title: "Labs & Workshops",
+    icon: <FlaskConical size={32} className="text-green-500 group-hover:text-white transition-all duration-300" />,
+    description: "Practical workshops with guided exercises to understand XSS attack vectors.",
+    features: ["Virtual labs", "Real-world examples", "Expert guidance"],
+    color: "from-green-500 to-green-600",
+    buttonText: "Enter Lab"
+  },
+  {
+    title: "Security Tools",
+    icon: <ShieldAlert size={32} className="text-red-500 group-hover:text-white transition-all duration-300" />,
+    description: "Learn to use essential security tools for identifying and preventing XSS vulnerabilities.",
+    features: ["Scanner tutorials", "Prevention techniques", "Security audits"],
+    color: "from-red-500 to-red-600",
+    buttonText: "Explore Tools"
+  }
+];
 
-  const executeCode = () => {
-    const scriptPattern = /^<script>alert\('(.+)'\)<\/script>$/;
-    const match = scriptPattern.exec(userInput.trim());
-
-    if (match) {
-      alert(match[1]);
-      setFeedback("Correct! Great job!");
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!userInput.trim()) {
-      setFeedback("Input cannot be empty. Please try again.");
-      return;
-    }
-
-    executeCode();
-  };
-
+export default function LearningPaths() {
   return (
-    <div className="min-h-screen bg-bg text-fg font-serif p-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-center text-fg font-mono">
-    XSS Learning
-        </h1>
+    <div className="min-h-screen bg-bg text-txt py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-serif md:text-5xl lg:text-6xl font-bold text-txt mb-6">
+            Master XSS Security
+          </h1>
+          <p className="text-xl text-txt/80 font-lato max-w-3xl mx-auto">
+            Choose your learning path and discover how to identify, exploit, and protect against Cross-Site Scripting vulnerabilities.
+          </p>
+        </div>
 
-        <div className="bg-gray-800 text-white rounded-lg shadow-xl p-8">
-          <h2 className="text-2xl font-semibold mb-4 text-orange-300">
-            Level {levels[0].id}: {levels[0].title}
-          </h2>
-          <p className="mb-4">{levels[0].description}</p>
-          <div className="bg-gray-700 p-4 rounded-md mb-4">
-            <h3 className="font-semibold mb-2">Challenge:</h3>
-            <p>{levels[0].challenge}</p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="mb-4">
-            <textarea
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              className="w-full bg-gray-700 border border-gray-600 rounded-md p-2 text-gray-300"
-              rows={4}
-              placeholder="Enter your solution here"
-            />
-            <button
-              type="submit"
-              className="mt-2 bg-orange-500 text-white font-bold py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"
-            >
-              Submit Solution
-            </button>
-          </form>
-
-          {feedback && (
+        {/* Learning Paths Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {learningPaths.map((path, index) => (
             <div
-              className={`p-4 rounded-md mb-4 ${
-                feedback.includes("Correct") ? "bg-green-700" : "bg-red-700"
-              }`}
+              key={index}
+              className="group relative bg-bg rounded-xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-bg-bg"
             >
-              <h3 className="font-semibold mb-2">Feedback:</h3>
-              <p>{feedback}</p>
+              {/* Gradient Overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${path.color} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+              
+              {/* Card Content */}
+              <div className="relative z-10">
+                <div className="mb-4 flex justify-center">
+                  {path.icon}
+                </div>
+                <h3 className="text-xl font-bold text-txt mb-3 group-hover:text-white transition-colors duration-300">
+                  {path.title}
+                </h3>
+                <p className="text-txt/90 mb-4 group-hover:text-white transition-colors duration-300">
+                  {path.description}
+                </p>
+                <ul className="space-y-2 mb-6">
+                  {path.features.map((feature, idx) => (
+                    <li key={idx} className="text-txt/90 group-hover:text-white transition-colors duration-300 flex items-center">
+                      <span className="w-1.5 h-1.5 bg-slate-500 rounded-full mr-2 group-hover:bg-white"></span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <button className="w-full py-2 px-4 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors duration-300 group-hover:bg-white group-hover:text-slate-900">
+                  {path.buttonText}
+                </button>
+              </div>
             </div>
-          )}
-
-          <button
-            onClick={() => setFeedback(levels[0].hint)}
-            className="text-orange-400 hover:text-orange-300"
-          >
-            Need a hint?
-          </button>
+          ))}
         </div>
 
-        <div className="mt-8 flex justify-between">
-          <button
-            disabled
-            className="bg-gray-700 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-600 transition duration-300 disabled:opacity-50"
-          >
-            Previous Level
-          </button>
-          <button
-            disabled
-            className="bg-gray-700 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-600 transition duration-300 disabled:opacity-50"
-          >
-            Next Level
-          </button>
-        </div>
+      
       </div>
     </div>
   );
-};
-
-export default Learn;
+}
