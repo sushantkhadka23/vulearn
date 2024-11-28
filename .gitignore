@@ -1,2 +1,8 @@
+## server side ignores
 /server/node_modules
 /server/.env
+/server/dist
+
+
+/client/node_modules
+/client/.env

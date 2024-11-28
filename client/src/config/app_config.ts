@@ -1,5 +1,3 @@
-
-
 interface AppConfig{
     recaptchaSiteKey:string;
 }
