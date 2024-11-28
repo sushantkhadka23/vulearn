@@ -1,5 +1,5 @@
 import express from 'express';
-import { execCmd } from './command-controller';
+import { execCmd } from './command.controller';
 
 const router = express.Router();
 
