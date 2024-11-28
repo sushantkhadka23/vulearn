@@ -1,8 +1,9 @@
+import UnderConstructionPage from "../UnderConstructionPage";
 
 
 
 export default function Tools() {
   return (
-    <div>Tools</div>
+    <UnderConstructionPage />
   );
 }

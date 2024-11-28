@@ -54,36 +54,6 @@ export default function AppRouter() {
 }
 
 
-// /*
-// //main layout
-// main header
-// outlet (home,learn,about)pages
-// main footer
-
-// //inside learn page
-// main header
-// learn (tools,guides,lab)
-// main footer
-
-// //clicking on labs page
-// learning header
-// outlet(lab1,lab2,lab3)
-// learning footer
-
-// //clicking tools
-// learning header
-// outlet(tools1,tools2,tools3)
-// learning footer
-
-// //clicking on  guides page
-// learnig header
-// outlet(guide1,guide2,guide3)
-// learning footer
-
-
-
-//  */
-
 
 
 

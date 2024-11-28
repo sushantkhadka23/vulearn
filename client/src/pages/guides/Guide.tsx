@@ -1,9 +1,10 @@
+import UnderConstructionPage from "../UnderConstructionPage";
 
 
 
 
 export default function Guide() {
   return (
-    <div>Guide</div>
+    <UnderConstructionPage />
   );
 }

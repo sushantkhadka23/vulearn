@@ -7,15 +7,6 @@ const NoSQLInjectionPage = () => {
   return (
     <div className="min-h-screen bg-bg">
       <article className="max-w-4xl mx-auto px-4 py-12">
-        {/* Featured Image */}
-        <div className="rounded-2xl overflow-hidden shadow-lg mb-8">
-          <img
-            src="/api/placeholder/1200/600"
-            alt="NoSQL Injection Concept"
-            className="w-full h-[400px] object-cover"
-          />
-        </div>
-
         {/* Content */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
           {/* Header */}
