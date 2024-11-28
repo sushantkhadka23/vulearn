@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 //head and tails
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./main/Footer";
+import Header from "./main/Header";
 
 export default function Layouts() {
   return (

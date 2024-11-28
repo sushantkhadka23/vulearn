@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import NAVITEMS from "../types/navbarItems";
+import NAVITEMS from "../../types/navbarItems";
 
 const website_name = `<VuLearn/>`;
 

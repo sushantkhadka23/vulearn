@@ -1,12 +1,9 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 //slices
-import authReducer from "./auth/authSlice";
 import levelReducer from "./level/levelSlice";
 
 export const store = configureStore({
     reducer:{
-        auth:authReducer,
         level:levelReducer,
     },
 });

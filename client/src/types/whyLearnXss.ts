@@ -1,7 +1,9 @@
 
 
-export type WhyLearnXssProps  = {
-    icon:JSX.Element;
-    title:string;
-    description:string;
-  }
+
+export interface Features {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+

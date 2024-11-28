@@ -1,45 +1,55 @@
 import { BookOpen, Code, Shield } from "lucide-react";
-import { WhyLearnXssProps } from "../types/whyLearnXss";
+import { Features } from "../types/whyLearnXss";
 
-const features: WhyLearnXssProps[] = [
+const features:Features[]  = [
   {
-    icon: <BookOpen className="mx-auto mb-4 text-orange-500" size={48} />,
+    icon: <BookOpen className="text-orange-500 transition-all duration-300 group-hover:text-white" size={48} />,
     title: "Beginner Friendly",
-    description:
-      "Start from the basics and gradually build your understanding of web security and XSS.",
+    description: "Start from the basics and gradually build your understanding of web security and XSS.",
   },
   {
-    icon: <Code className="mx-auto mb-4 text-orange-500" size={48} />,
+    icon: <Code className="text-orange-500 transition-all duration-300 group-hover:text-white" size={48} />,
     title: "Practical Examples",
-    description:
-      "Learn through simple, real-world examples that demonstrate how XSS vulnerabilities work.",
+    description: "Learn through simple, real-world examples that demonstrate how XSS vulnerabilities work.",
   },
+  
   {
-    icon: <Shield className="mx-auto mb-4 text-orange-500" size={48} />,
+    icon: <Shield className="text-orange-500 transition-all duration-300 group-hover:text-white" size={48} />,
     title: "Security Best Practices",
-    description:
-      "Discover how to write secure code and protect websites against common vulnerabilities.",
+    description: "Discover how to write secure code and protect websites against common vulnerabilities.",
   },
 ];
 
 export default function WhyLearnXSS() {
   return (
-    <section className="py-16 bg-bg text-slate-950 font-serif">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold mb-12">
-          Why Learn XSS With Us?
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <section className="py-16 lg:py-24 bg-bg">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 font-serif">
+            Why Learn XSS With Us?
+          </h2>
+          
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-slate-800 p-8 rounded-2xl shadow-xl transform hover:scale-105 hover:shadow-2xl hover:bg-orange-600 hover:text-white border-2 border-transparent transition-all duration-300"
+              className="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-fg"
             >
-              <div className="flex justify-center mb-6">
-                {feature.icon}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <div className="relative z-10">
+                <div className="flex justify-center mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="text-2xl font-semibold font-serif text-slate-900 mb-4 group-hover:text-white transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-slate-600 font-mono group-hover:text-slate-100 transition-colors duration-300">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-semibold text-white mb-4">{feature.title}</h3>
-              <p className="text-lg text-gray-200">{feature.description}</p>
             </div>
           ))}
         </div>
