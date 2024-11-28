@@ -1,33 +1,32 @@
+const endpoint: string = "http://localhost:3000/api/v1/no-sql/users";
 
-  interface NoSQLLoginResponse {
-    success: boolean;
-    message: string;
-  }
-  
-  const noSQLLogin = async (username: string, password: string): Promise<NoSQLLoginResponse> => {
-    try {
-      const response = await fetch("/api/nosql-login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to login');
-      }
-  
-      const data: NoSQLLoginResponse = await response.json();
-      return data; 
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error('Error:', error.message);
-        return { success: false, message: error.message };
-      } else {
-        console.error('Unknown error:', error);
-        return { success: false, message: 'Unknown error' };
-      }
+export interface Users {
+  id: string;
+  username: string;
+  password: string;
+  flag: string;
+}
+
+const noSQLLogin = async (username: string, password: string) => {
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+
+    if (!res.ok) {
+      const errorMessage = await res.text();
+      throw new Error(`Failed to login: ${errorMessage}`);
     }
-  };
-  
-  export { noSQLLogin };
-  
+
+    const data: Users | null = await res.json(); 
+    return data;
+  } catch (error: unknown) {
+    console.error("Fetch error:", error);
+    throw error;
+  }
+};
+
+
+export { noSQLLogin };
