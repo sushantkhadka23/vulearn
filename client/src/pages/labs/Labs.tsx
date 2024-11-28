@@ -1,57 +1,95 @@
+import { Shield, Lock, Key, Code } from "lucide-react";
 
-export default function Labs() {
-  const labActivities = [
+type LabsType = {
+  title: string;
+  icon: JSX.Element;
+  description: string;
+  link: string;
+  color: string; // bgg color for hover
+  hoverColor: string; // hover border and text color
+};
+
+const Labs = () => {
+  const labActivities: LabsType[] = [
     {
-      title: "Lab 1: Understanding XSS",
-      description: "Explore the fundamentals of Cross-Site Scripting through practical exercises.",
-      link: "/labs/lab1",
+      title: "Broken Access Control",
+      description:
+        "Learn how attackers exploit improper access controls to gain unauthorized access to sensitive data or functionalities. Understand techniques to mitigate these risks and implement robust controls.",
+      link: "/learn/labs/broken-access-control",
+      icon: <Shield className="w-8 h-8 text-pink-500" />,
+      color: "bg-red-100",
+      hoverColor: "hover:border-pink-500 hover:text-pink-500",
     },
     {
-      title: "Lab 2: Exploiting XSS",
-      description: "Learn how to exploit XSS vulnerabilities in a controlled environment.",
-      link: "/labs/lab2",
+      title: "Broken Authentication",
+      description:
+        "Dive into vulnerabilities in authentication mechanisms that allow attackers to impersonate users. Discover common pitfalls like weak passwords and improper session management, and how to avoid them.",
+      link: "/learn/labs/broken-auth",
+      icon: <Lock className="w-8 h-8 text-yellow-500" />,
+      color: "bg-yellow-100",
+      hoverColor: "hover:border-yellow-500 hover:text-yellow-500",
     },
     {
-      title: "Lab 3: Preventing XSS",
-      description: "Implement best practices to prevent XSS attacks in web applications.",
-      link: "/labs/lab3",
+      title: "Cryptographic Failures",
+      description:
+        "Explore the consequences of weak or improperly implemented cryptographic solutions. Gain insights into protecting data in transit and at rest by following modern encryption standards.",
+      link: "/learn/labs/cryptographic-failure",
+      icon: <Key className="w-8 h-8 text-orange-500" />,
+      color: "bg-green-100",
+      hoverColor: "hover:border-green-500 hover:text-green-500",
     },
     {
-      title: "Lab 4: Real-World Scenarios",
-      description: "Analyze real-world examples of XSS vulnerabilities and their impacts.",
-      link: "/labs/lab4",
+      title: "Injection Attacks",
+      description:
+        "Understand how attackers exploit injection vulnerabilities like SQL injection or XSS to execute malicious code. Learn preventive measures, such as input validation and prepared statements.",
+      link: "/learn/labs/injection",
+      icon: <Code className="w-8 h-8 text-orange-500" />,
+      color: "bg-blue-100",
+      hoverColor: "hover:border-blue-500 hover:text-blue-500",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-bg text-txt py-16 px-4">
+    <div className="min-h-screen bg-white py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-serif md:text-5xl lg:text-6xl font-bold text-txt mb-6">
-            Labs & Workshops
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-gray-900 mb-6">
+            Labs & Workshop
           </h1>
-          <p className="text-xl text-txt/80 font-lato max-w-3xl mx-auto">
-            Engage in hands-on exercises to deepen your understanding of XSS vulnerabilities.
+          <p className="text-xl font-lato text-gray-600 max-w-3xl mx-auto">
+            Hands-on exercises to master web security vulnerabilities and protection techniques.
           </p>
         </div>
 
         {/* Labs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {labActivities.map((activity, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
-              <h3 className="text-xl font-bold text-txt mb-2">{activity.title}</h3>
-              <p className="text-txt/90 mb-4">{activity.description}</p>
-              <a 
-                href={activity.link} 
-                className="inline-block py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors duration-300"
-              >
-                Start Lab
-              </a>
+            <div
+              key={index}
+              className={`border-2 rounded-xl shadow-lg p-8 transition-all duration-300 ${activity.color} ${activity.hoverColor}`}
+            >
+              <div className="flex items-start space-x-4">
+                <div className="bg-orange-50 rounded-lg p-3">{activity.icon}</div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold font-serif text-gray-900 mb-2">
+                    {activity.title}
+                  </h3>
+                  <p className="text-gray-600 font-mono mb-6">{activity.description}</p>
+                  <a
+                    href={activity.link}
+                    className="inline-flex items-center justify-center px-6 py-3 border-2 border-transparent text-orange-500 font-medium rounded-lg hover:bg-transparent hover:border-current hover:text-current transition-all duration-300"
+                  >
+                    View Topics
+                  </a>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Labs;

@@ -7,13 +7,18 @@ import NotFound from "../pages/NotFound";
 import Layouts from "../layouts/Layouts";
 import Home from "../pages/Home";
 import Learn from "../pages/Learn";
-import LabLayout from "../layouts/LabLayout";
-import Guide from "../pages/guides/Guide";
+import Labs from "../pages/labs/Labs";
 import Tools from "../pages/tools/Tools";
-import Broken_Access_control from "../pages/labs/Broken_Access_control";
+import Guide from "../pages/guides/Guide";
 import Broken_Auth from "../pages/labs/Broken_Auth";
+import Broken_Access_control from "../pages/labs/Broken_Access_control";
 import CrypotgraphicFailure from "../pages/labs/Cryptographic_Failure";
 import Injection from "../pages/labs/Injection";
+import SQLInjectionPage from "../pages/labs/sql/SQLInjectionPage";
+import SQLInjectionLab from "../pages/labs/sql/SQLInjectionLab";
+import NoSQLInjectionPage from "../pages/labs/noSql/NoSQLInjectionPage";
+import NoSQLInjectionLab from "../pages/labs/noSql/NoSQLInjectionLab";
+
 
 export default function AppRouter() {
   return (
@@ -24,16 +29,22 @@ export default function AppRouter() {
           <Route path="/about" element={<About />} />
           <Route path="/learn" element={<Learn />} />
           {/* under learn */}
-          <Route path="/learn/labs" element={<LabLayout />} />
-          {/* under labs */}
-          <Route path="/learn/labs/broken-access-control" element={<Broken_Access_control />} />
-          <Route path="/learn/labs/broken-auth" element={<Broken_Auth />} />
-          <Route path="/learn/labs/cryptographic-failure" element={<CrypotgraphicFailure />} />
-          <Route path="/learn/labs/injection" element={<Injection />} />
+          <Route path="/learn/labs" element={<Labs />} />
+           {/* under labs */}
+           <Route path="/learn/labs/broken-auth" element={<Broken_Auth />} />
+           <Route path="/learn/labs/broken-access-control" element={<Broken_Access_control />} />
+           <Route path="/learn/labs/cryptographic-failure" element={<CrypotgraphicFailure />} />
+           <Route path="/learn/labs/injection" element={<Injection />} />
+           {/* under injection */}
+           <Route path="/learn/labs/injection/sql-injection" element={<SQLInjectionPage />} />
+           <Route path="/learn/labs/injection/sql-injection/lab" element={<SQLInjectionLab />} />
+           <Route path="/learn/labs/injection/nosql-injection" element={<NoSQLInjectionPage />} />
+           <Route path="/learn/labs/injection/nosql-injection/lab" element={<NoSQLInjectionLab />} />
 
-          <Route path="/learn/guide" element={<Guide />} />
+
           <Route path="/learn/tools" element={<Tools />} />
-        </Route>
+          <Route path="/learn/guides" element={<Guide />} />
+          </Route>
 
         {/* Catch all for 404 */}
         <Route path="*" element={<NotFound />} />
@@ -72,6 +83,8 @@ export default function AppRouter() {
 
 
 //  */
+
+
 
 
 

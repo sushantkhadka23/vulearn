@@ -8,7 +8,7 @@ export default function CrypotgraphicFailure() {
        flex-col justify-center items-center"
       >
         <p className="text-2xl text-txt">
-          This is simple demo of broken acces control
+          This is simple demo of Cryptographic_Failure
         </p>
       </div>
     );

@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import { ShieldAlert, FlaskConical, BookOpen } from "lucide-react";
 import { LearningPath } from "../types/learnType";
-
 
 const learningPaths: LearningPath[] = [
   {
@@ -16,7 +16,7 @@ const learningPaths: LearningPath[] = [
     features: ["Detailed explanations", "Best practices", "Security standards"],
     color: "from-blue-500 to-blue-600",
     buttonText: "Read Guides",
-    navigate: "/learn/guide",
+    navigate: "/learn/guides",
   },
   {
     title: "Labs & Workshops",
@@ -44,7 +44,7 @@ const learningPaths: LearningPath[] = [
     description:
       "Learn to use essential security tools for identifying and preventing XSS vulnerabilities.",
     features: ["Scanner tutorials", "Prevention techniques", "Security audits"],
-    color: "from-red-800 to-red-900",
+    color: "from-red-500 to-red-600",
     buttonText: "Explore Tools",
     navigate: "/learn/tools",
   },
@@ -98,14 +98,13 @@ export default function Learn() {
                   ))}
                 </ul>
 
-                <a
-                  href={path.navigate || "/"}
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                {/* Use Link for Navigation */}
+                <Link
+                  to={path.navigate || '/'}
                   className="w-full inline-block text-center py-2 px-4 bg-slate-700 text-white font-semibold font-mono rounded-lg hover:bg-slate-600 transition-colors duration-300 group-hover:bg-white group-hover:text-slate-900"
                 >
                   {path.buttonText}
-                </a>
+                </Link>
               </div>
             </div>
           ))}
