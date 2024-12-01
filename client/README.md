@@ -48,6 +48,3 @@ export default tseslint.config({
   },
 })
 ```
-
-
-## adding a simple readme.md
