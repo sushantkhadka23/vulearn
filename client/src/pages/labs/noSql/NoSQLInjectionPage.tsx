@@ -72,3 +72,9 @@ const NoSQLInjectionPage = () => {
 };
 
 export default NoSQLInjectionPage;
+
+
+
+
+
+

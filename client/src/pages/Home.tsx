@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import WhyLearnXSS from "../components/WhyLearnXss";
+import WhyLearnWebSecurity from "../components/WhyLearnWebSecurity";
 
 const Home: React.FC = () => {
   return (
@@ -16,13 +16,16 @@ const Home: React.FC = () => {
         {/* Main content */}
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6 leading-tight">
-            Learn XSS:
-            <span className="block mt-2">Web Security Essentials</span>
+            {/** ayush lai sodera halne for now khali */}
+            <span className="block mt-2">
+              Introduction to Web Security Essentials
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed opacity-90">
-            Discover Cross-Site Scripting (XSS) from the basics. Understand web
-            vulnerabilities and how to protect against them.
+            Explore the fundamentals of web security. Learn about common
+            vulnerabilities like Cross-Site Scripting (XSS), SQL Injection, and
+            how to protect your web applications from these threats.
           </p>
 
           <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row justify-center items-center">
@@ -40,7 +43,7 @@ const Home: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-200 to-transparent opacity-20" />
       </section>
       {/* Features Section */}
-      <WhyLearnXSS />
+      <WhyLearnWebSecurity />
     </div>
   );
 };

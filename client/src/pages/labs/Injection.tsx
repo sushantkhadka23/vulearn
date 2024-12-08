@@ -42,7 +42,7 @@ export default function Injection() {
         "Learn how malicious scripts are injected into web pages to steal data or manipulate user interactions.",
       shortSnippet: "Understand how scripts can be injected into webpages.",
       color: "bg-green-100 hover:border-green-500 hover:bg-green-200",
-      link: "/learn/labs/injection/xss",
+      link: "/learn/labs/injection/xss-injection",
     },
   ];
 

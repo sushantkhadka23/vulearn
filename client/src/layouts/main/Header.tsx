@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"; 
 import Navbar from "../../components/Navbar";
 
-const website_name = `<VuLearn/>`;
+const website_name = `<VuLearn>`;
 
 export default function Header() {
   return (
