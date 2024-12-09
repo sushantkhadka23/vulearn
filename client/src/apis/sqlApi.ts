@@ -1,4 +1,4 @@
-const endpoint: string = "http://localhost:3000/api/v1/sql/users";
+const endpoint: string = "http://localhost:3000/api/v1/sql/login";
 
 export interface Users {
   id: string;
@@ -30,3 +30,12 @@ const sqlLogin = async (username: string, password: string) => {
 
 
 export { sqlLogin };
+
+
+
+
+// pwd:QryuyO1Ruql2l
+// admin
+
+
+
