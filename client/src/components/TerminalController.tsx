@@ -137,9 +137,7 @@ const TerminalController: React.FC = () => {
       // Handle commands not in the predefined set by sending them to the endpoint
       try {
         const data = await commandApiEndpoint(input);  
-        if(data){
-          output = data.toString();
-        }    
+        output = data.toString();
       } catch (error) {
         const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
         output = `Error: ${errorMessage}`;
