@@ -8,7 +8,6 @@ export default function XSSInjectionLab() {
       try {
         const response = await cookieEndpointApi();
         document.cookie = response;
-        console.log("Response:", response); 
       } catch (error) {
         console.error("Error fetching cookie data:", error);
       }
