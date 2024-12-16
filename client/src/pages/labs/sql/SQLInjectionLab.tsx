@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { sqlLogin } from "../../../apis/sqlApi";
+import { Eye, EyeOff } from "lucide-react"; 
 
 export default function SQLInjectionLab() {
   const [username, setUsername] = useState<string>("");
@@ -7,6 +8,11 @@ export default function SQLInjectionLab() {
   const [user, setUser] = useState<any | null>(null);
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -66,7 +72,7 @@ export default function SQLInjectionLab() {
                 required
               />
             </div>
-            <div>
+            <div className="relative">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
@@ -75,13 +81,26 @@ export default function SQLInjectionLab() {
               </label>
               <input
                 id="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="block w-full mt-2 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="Enter password"
                 required
               />
+              {/* Eye toggle button */}
+              <button
+                type="button"
+                onClick={handleVisibility}
+                className="absolute inset-y-12 right-3 flex items-center"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff className="h-5 w-5 text-gray-500" />
+                ) : (
+                  <Eye className="h-5 w-5 text-gray-500" />
+                )}
+              </button>
             </div>
             <button
               type="submit"
@@ -113,7 +132,9 @@ export default function SQLInjectionLab() {
         {/* User Data Display */}
         {user && (
           <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mt-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 font-serif">User Data</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 font-serif">
+              User Data
+            </h3>
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <span className="text-lg font-medium text-gray-700">ID:</span>

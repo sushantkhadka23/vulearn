@@ -7,7 +7,6 @@ const command_endpoint = (input: string): string =>
   
       if (response.ok) {
         const output:string = await response.json();
-        console.log(output);
         return output;
       } else {
         return `Error: Unable to process command (${response.status})`;

@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.2.7",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.7.9",
     "framer-motion": "^11.3.31",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.437.0",

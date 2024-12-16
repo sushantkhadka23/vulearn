@@ -1,5 +1,6 @@
 const endpoint: string = "http://localhost:3000/api/v1/sql/login";
 
+
 export interface Users {
   id: string;
   username: string;
@@ -34,8 +35,7 @@ export { sqlLogin };
 
 
 
-// pwd:QryuyO1Ruql2l
-// admin
+
 
 
 

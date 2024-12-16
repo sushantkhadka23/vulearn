@@ -167,7 +167,9 @@ const TerminalController: React.FC = () => {
 
       setTerminalLines((prevLines) => [
         ...prevLines.slice(-20),
-        <TerminalOutput key={prevLines.length}>{randomChars}</TerminalOutput>,
+        <TerminalOutput key={prevLines.length}>
+          <p className="text-green-600 ">{randomChars}</p>
+        </TerminalOutput>,
       ]);
     };
 
