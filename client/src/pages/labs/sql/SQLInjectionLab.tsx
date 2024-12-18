@@ -154,6 +154,7 @@ export default function SQLInjectionLab() {
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-lg font-medium text-gray-700">Flag:</span>
+
                 <span className="text-lg text-gray-500">{user.flag}</span>
               </div>
             </div>

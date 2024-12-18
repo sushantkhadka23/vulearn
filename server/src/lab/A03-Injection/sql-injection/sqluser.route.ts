@@ -1,4 +1,3 @@
-
 import { Router } from 'express';
 import { createUserSchema } from './sqluser.controller';
 

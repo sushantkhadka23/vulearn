@@ -1,5 +1,5 @@
-const endpoint: string = "http://localhost:3000/api/v1/sql/login";
 
+const endpoint: string = "http://localhost:3000/api/v1/sql/login";
 
 export interface Users {
   id: string;
@@ -22,6 +22,7 @@ const sqlLogin = async (username: string, password: string) => {
     }
 
     const data: Users | null = await res.json(); 
+
     return data;
   } catch (error: unknown) {
     console.error("Fetch error:", error);
@@ -29,13 +30,4 @@ const sqlLogin = async (username: string, password: string) => {
   }
 };
 
-
 export { sqlLogin };
-
-
-
-
-
-
-
-
