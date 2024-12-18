@@ -1,33 +1,39 @@
+const endpoint: string = "http://localhost:3000/api/v1/sqli/login";
 
 
-interface LoginResponse {
-  success: boolean;
-  message: string;
+export interface Users {
+  id: string;
+  username: string;
+  password: string;
+  flag: string;
 }
 
-const login = async (username: string, password: string): Promise<LoginResponse> => {
+// QryuyO1Ruql2l
+//admin
+
+
+
+const sqlLogin = async (username: string, password: string) => {
   try {
-    const response = await fetch("/api/sql-login", {
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
     });
-    
-    if (!response.ok) {
-      throw new Error('Failed to login');
+
+    if (!res.ok) {
+      const errorMessage = await res.text();
+      throw new Error(`Failed to login: ${errorMessage}`);
     }
-    
-    const data: LoginResponse = await response.json();
-    return data; 
+
+    const data: Users | null = await res.json(); 
+    console.log(data);
+    return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error('Error:', error.message);
-      return { success: false, message: error.message };
-    } else {
-      console.error('Unknown error:', error);
-      return { success: false, message: 'Unknown error' };
-    }
+    console.error("Fetch error:", error);
+    throw error;
   }
 };
 
-export { login };
+
+export { sqlLogin };

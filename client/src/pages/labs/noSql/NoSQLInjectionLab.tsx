@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { noSQLLogin } from '../../../apis/nosqlApi';
+import React, { useState } from "react";
+import { noSQLLogin } from "../../../apis/nosqlApi";
 
 export default function NoSQLInjectionLab() {
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [user, setUser] = useState<any | null>(null);
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -11,13 +12,22 @@ export default function NoSQLInjectionLab() {
     e.preventDefault();
     setLoading(true);
     setResponse(null);
+    setUser(null);
 
-    // Call the noSQLLogin function from the API
-    const data = await noSQLLogin(username, password);
-
-    // Set the response message based on the API response
-    setResponse(data.message);
-    setLoading(false);
+    try {
+      // Call the noSQLLogin function
+      const data = await noSQLLogin(username, password);
+      if (data) {
+        setUser(data);
+        setResponse("Login successful! User data displayed below.");
+      } else {
+        setResponse("Login failed: No user found.");
+      }
+    } catch (error) {
+      setResponse("Login failed: An error occurred.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -29,34 +39,22 @@ export default function NoSQLInjectionLab() {
             NoSQL Injection Lab
           </h1>
           <p className="text-lg font-lato text-gray-600 max-w-lg mx-auto md:text-xl">
-            Simulate NoSQL Injection attacks and learn about their prevention
-            in a controlled environment.
+            Simulate NoSQL Injection attacks and learn about their prevention in
+            a controlled environment.
           </p>
         </div>
 
-        {/* Scenario Description */}
-        <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Scenario Overview</h2>
-          <p className="text-gray-700 mb-4">
-            This lab features a vulnerable login form for NoSQL databases. Your
-            task is to bypass authentication using NoSQL Injection techniques.
-          </p>
-          <div className="bg-gray-100 p-4 rounded-md font-mono text-sm text-gray-800">
-            Example Input: <code>{`{ "$ne": null }`}</code>
-          </div>
-        </div>
-
-        {/* Login Simulation */}
+        {/* Login Form */}
         <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl shadow-lg p-6 md:p-8">
-          <h3 className="text-xl font-semibold text-gray-800 mb-6">Simulated Login</h3>
-          <p className="text-gray-600 mb-6">
-            Use the fields below to simulate a NoSQL Injection attack. Observe
-            the responses and consider how to prevent such vulnerabilities.
-          </p>
-
+          <h3 className="text-xl font-semibold text-gray-800 mb-6">
+            Simulated Login
+          </h3>
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Username
               </label>
               <input
@@ -70,7 +68,10 @@ export default function NoSQLInjectionLab() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
@@ -87,7 +88,9 @@ export default function NoSQLInjectionLab() {
               type="submit"
               disabled={loading}
               className={`inline-block w-full md:w-auto px-6 py-3 font-medium text-white rounded-lg transition-colors duration-300 ${
-                loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-600 hover:bg-blue-700"
               }`}
             >
               {loading ? "Logging in..." : "Log In"}
@@ -98,7 +101,7 @@ export default function NoSQLInjectionLab() {
           {response && (
             <div
               className={`mt-6 p-4 rounded-md text-sm font-medium ${
-                response.includes("bypassed")
+                response.includes("successful")
                   ? "bg-green-100 text-green-700"
                   : "bg-red-100 text-red-700"
               }`}
@@ -107,6 +110,35 @@ export default function NoSQLInjectionLab() {
             </div>
           )}
         </div>
+
+        {/* User Data Display */}
+        {user && (
+          <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mt-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 font-serif">User Data</h3>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-3">
+                <span className="text-lg font-medium text-gray-700">ID:</span>
+                <span className="text-lg text-gray-500">{user._id}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-lg font-medium text-gray-700">
+                  Username:
+                </span>
+                <span className="text-lg text-gray-500">{user.username}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-lg font-medium text-gray-700">
+                  Password:
+                </span>
+                <span className="text-lg text-gray-500">{user.password}</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-lg font-medium text-gray-700">Flag:</span>
+                <span className="text-lg text-red-500">{user.flag}</span>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

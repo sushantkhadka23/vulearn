@@ -16,12 +16,12 @@ const Home: React.FC = () => {
         {/* Main content */}
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6 leading-tight">
-            Learn XSS:
-            <span className="block mt-2">Web Security Essentials</span>
+            Learn Web Security
+            <span className="block mt-2">Secure Web App</span>
           </h1>
 
           <p className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed opacity-90">
-            Discover Cross-Site Scripting (XSS) from the basics. Understand web
+            Discover Web Vulnerabilities from the basics. Understand web
             vulnerabilities and how to protect against them.
           </p>
 

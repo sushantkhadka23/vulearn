@@ -9,7 +9,7 @@ export const loginUser = async (req: Request, res: Response):Promise<Response> =
       const query = { username:username ,password :password};
       const users = await User.findOne(query); 
       if (!users){
-        return res.status(404).json({ message: 'Invalid Credentails' });
+        return res.status(401).json({ message: 'Invalid Credentails' });
       }
       return res.json(users);
     } catch (err) {
