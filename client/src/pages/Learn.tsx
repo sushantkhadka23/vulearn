@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { ShieldAlert, FlaskConical, BookOpen } from "lucide-react";
 import { LearningPath } from "../types/learnType";
 

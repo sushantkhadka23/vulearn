@@ -1,5 +1,5 @@
-const endpoint: string = "http://localhost:3000/api/v1/sqli/login";
 
+const endpoint: string = "http://localhost:3000/api/v1/sql/login";
 
 export interface Users {
   id: string;
@@ -7,11 +7,6 @@ export interface Users {
   password: string;
   flag: string;
 }
-
-// QryuyO1Ruql2l
-//admin
-
-
 
 const sqlLogin = async (username: string, password: string) => {
   try {
@@ -27,13 +22,12 @@ const sqlLogin = async (username: string, password: string) => {
     }
 
     const data: Users | null = await res.json(); 
-    console.log(data);
+
     return data;
   } catch (error: unknown) {
     console.error("Fetch error:", error);
     throw error;
   }
 };
-
 
 export { sqlLogin };

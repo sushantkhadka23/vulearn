@@ -1,8 +1,5 @@
 const endpoint: string = "http://localhost:3000/api/v1/no-sql/users";
 
-//admin720374 
-//adminisdanger
-
 export interface Users {
   id: string;
   username: string;
@@ -30,6 +27,5 @@ const noSQLLogin = async (username: string, password: string) => {
     throw error;
   }
 };
-
 
 export { noSQLLogin };
