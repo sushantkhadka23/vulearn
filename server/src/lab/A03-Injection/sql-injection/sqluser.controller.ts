@@ -12,7 +12,7 @@ export const createUserSchema = async (req: Request, res: Response): Promise<Res
         if (resQuery.rows.length === 0) {
                 return res.status(401).json({message:'Invalid credentials'});
          }
-        return res.json(resQuery.rows);
+        return res.json(resQuery.rows[0]);
       } catch (err) {
         console.error('Error while connecting or executing query:', err);
         return res.status(500).send('Internal Server Error');

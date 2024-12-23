@@ -16,7 +16,6 @@ const Home: React.FC = () => {
         {/* Main content */}
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold font-serif mb-6 leading-tight">
-            {/** ayush lai sodera halne for now khali */}
             <span className="block mt-2">
               Introduction to Web Security Essentials
             </span>

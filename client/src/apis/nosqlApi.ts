@@ -28,5 +28,4 @@ const noSQLLogin = async (username: string, password: string) => {
   }
 };
 
-
 export { noSQLLogin };
