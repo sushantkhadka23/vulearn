@@ -56,7 +56,7 @@ export default function Navbar() {
               className={navLinkClass}
               aria-label={item.name}
             >
-              <span className="">{item.name}</span>
+              <span>{item.name}</span>
             </NavLink>
           ))}
         </div>

@@ -20,7 +20,8 @@ export default function Footer() {
           {/* Footer Title and Copyright */}
           <div className="text-center md:text-left mb-6 md:mb-0">
           <div className="text-xl font-mono font-semibold text-fg hover:text-fg/70">
-          <span>{website_name}</span></div>    
+          <span>{website_name}</span>
+          </div>    
 
          
             <p className="text-lg mt-2">
