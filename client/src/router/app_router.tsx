@@ -8,7 +8,6 @@ import Layouts from "../layouts/Layouts";
 import Home from "../pages/Home";
 import Learn from "../pages/Learn";
 import Labs from "../pages/labs/Labs";
-import Tools from "../pages/tools/Tools";
 import Guide from "../pages/guides/Guide";
 import Broken_Auth from "../pages/labs/Broken_Auth";
 import Broken_Access_control from "../pages/labs/Broken_Access_control";
@@ -22,6 +21,7 @@ import CommandInjectionPage from "../pages/labs/command/CommandInjectionPage";
 import CommandInjectionLabPage from "../pages/labs/command/CommandInjectionLab";
 import XSSInjectionPage from "../pages/labs/xss/XSSInjectionPage";
 import XSSInjectionLab from "../pages/labs/xss/XssInjectionLab";
+import Tools from "../pages/tools/Tools";
 
 
 export default function AppRouter() {
