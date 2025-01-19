@@ -6,6 +6,7 @@ export const sendCookie = async (req: Request, res: Response):Promise <any> => {
             secure: false,   
             maxAge: 3600000  
         });
+        res.send("ok");
       
     } catch (err) {
       console.error(err);

@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import { sqlLogin } from "../../../apis/sqlApi";
 import { Eye, EyeOff } from "lucide-react"; 
 
+
+interface Sqluser{
+  id:string;
+  username:string;
+  password:string;
+  flag:string;
+}
+
 export default function SQLInjectionLab() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [user, setUser] = useState<any | null>(null);
+  const [user, setUser] = useState<Sqluser | null>(null);
   const [response, setResponse] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -23,18 +31,29 @@ export default function SQLInjectionLab() {
     try {
       const data = await sqlLogin(username, password);
       if (data) {
-        setUser(data);
+        setUser({
+          id: data.id,
+          username: data.username,
+          password: data.password,
+          flag: data.flag,
+        });
         setResponse("Login successful! User data displayed below.");
-      } else {
-        setResponse("Login failed: No user found.");
       }
     } catch (error) {
-      setResponse("Login failed: An error occurred.");
+      console.error(error);
+      if (error instanceof Error && error.message === "Invalid username or password.") {
+        setResponse("Login failed: Incorrect username or password.");
+      } else {
+        setResponse("Login failed: An error occurred. Please try again later.");
+      }
     } finally {
-      setLoading(false);
+      setLoading(false); 
     }
   };
 
+
+    
+    
   return (
     <div className="min-h-screen bg-bg py-16 px-6 md:px-12">
       <div className="max-w-4xl mx-auto space-y-12">
@@ -138,7 +157,7 @@ export default function SQLInjectionLab() {
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <span className="text-lg font-medium text-gray-700">ID:</span>
-                <span className="text-lg text-gray-500">{user._id}</span>
+                <span className="text-lg text-gray-500">{user.id}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-lg font-medium text-gray-700">

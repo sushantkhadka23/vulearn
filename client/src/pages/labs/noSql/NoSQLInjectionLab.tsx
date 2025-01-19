@@ -15,21 +15,26 @@ export default function NoSQLInjectionLab() {
     setUser(null);
 
     try {
-      // Call the noSQLLogin function
       const data = await noSQLLogin(username, password);
+
       if (data) {
         setUser(data);
         setResponse("Login successful! User data displayed below.");
-      } else {
-        setResponse("Login failed: No user found.");
       }
     } catch (error) {
-      setResponse("Login failed: An error occurred.");
+      console.error(error);
+      if (
+        error instanceof Error &&
+        error.message === "Invalid username or password."
+      ) {
+        setResponse("Login failed: Incorrect username or password.");
+      } else {
+        setResponse("Login failed: An error occurred. Please try again later.");
+      }
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className="min-h-screen bg-bg py-16 px-6 md:px-12">
       <div className="max-w-4xl mx-auto space-y-12">
@@ -114,7 +119,9 @@ export default function NoSQLInjectionLab() {
         {/* User Data Display */}
         {user && (
           <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 mt-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 font-serif">User Data</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6 font-serif">
+              User Data
+            </h3>
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
                 <span className="text-lg font-medium text-gray-700">ID:</span>
@@ -136,7 +143,6 @@ export default function NoSQLInjectionLab() {
                 <span className="text-lg font-medium text-gray-700">Flag:</span>
 
                 <span className="text-lg text-red-600">{user.flag}</span>
-              
               </div>
             </div>
           </div>

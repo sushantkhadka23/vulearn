@@ -1,15 +1,15 @@
 import express from 'express';
-import Nosql from './A03-Injection/no-sql-injection/user.route';
-import Cmdinjection from './A03-Injection/command-injection/command.route'
-import SqlInjection from './A03-Injection/sql-injection/sqluser.route'
-import XssInjection from './A03-Injection/xss-injection/xss.route'
+import Nosql from '../src/lab/A03-Injection/no-sql-injection/user.route';
+import Cmdinjection from '../src/lab/A03-Injection/command-injection/command.route';
+import SqlInjection  from "../src/lab/A03-Injection/sql-injection/sqluser.route";
+import XssInjection from './lab/A03-Injection/xss-injection/xss.route'
 import cors from 'cors'; 
 const app = express();
 
 
 app.use(
   cors({
-    origin: '*',
+    origin: 'http://localhost:5173/',
     credentials: true,
   })
 );
