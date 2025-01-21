@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const idorPostEndpoint: string = "http://localhost:3000/api/v1/idor/login";
-const idorGetUserDataEndpoint: string = "http://localhost:3000/api/v1/idor/user/:id";
 
 export interface IdorResponse{
     username:string;
@@ -30,20 +29,6 @@ const idorPostRequest = async (username: string, password: string): Promise<Idor
   }
 };
 
-// Function for GET request
-const idorGetUserData = async (): Promise<string | null> => {
-  try {
-    const response = await axios.get(idorGetUserDataEndpoint, { withCredentials: true });
-    return response.data; // Ensure response data is returned, not the entire response object.
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.error("Failed to fetch user data:", error.message);
-      return null; // Return `null` explicitly in case of failure.
-    } else {
-      console.error("Unexpected error:", error);
-      throw new Error("An unknown error occurred while fetching user data.");
-    }
-  }
-};
 
-export { idorPostRequest, idorGetUserData};
+
+export { idorPostRequest};

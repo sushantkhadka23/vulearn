@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://localhost:5173/',
+    origin: 'http://localhost:5173',
     credentials: true,
   })
 );
@@ -19,8 +19,7 @@ app.use(express.json());
 app.use('/api/v1/no-sql',Nosql);
 app.use('/api/v1/cmdi',Cmdinjection);
 app.use('/api/v1/sqli',SqlInjection);
-app.use('/api/v1/xss',XssInjection)
-
+app.use('/api/v1/xss',XssInjection);
 
 app.use('/api/v1/idor', IdorV);
 

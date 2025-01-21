@@ -8,3 +8,4 @@ router.get('/user/:id', getUserData as any);
 
 export default router;
 
+

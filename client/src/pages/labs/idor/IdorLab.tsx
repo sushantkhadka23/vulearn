@@ -98,7 +98,7 @@ const IDORLab: React.FC = () => {
                 type="submit"
                 className="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 transition-colors"
               >
-                Test Login
+                Login
               </button>
             </form>
 

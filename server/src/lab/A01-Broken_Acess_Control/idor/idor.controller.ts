@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { users, User } from './idor.schema';
+import { users } from './idor.schema';
 
 export const loginUser = async (req: Request, res: Response): Promise<any> => {
   try {
@@ -33,6 +33,7 @@ export const getUserData = async (req: Request, res: Response): Promise<any> => 
 
   const response = {
     username: user.username,
+    password:user.password,
     flag: user.flag || 'No flag available for this user',
   };
   return res.json(response);
