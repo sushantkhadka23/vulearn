@@ -72,8 +72,8 @@ const exploitTopics: ToolTopics[] = [
     name: "Sqlmap",
     description:
       "Sqlmap is a tool designed for extracting subdomains from various sources such as search engines and DNS.",
-    githubLink: "https://github.com/aboullaite/salmap",
-    webLink: "https://salmap.com/",
+    githubLink: "https://github.com/sqlmapproject/sqlmap",
+    webLink: "https://sqlmap.org/",
   },
   {
     name: "Nuclei",

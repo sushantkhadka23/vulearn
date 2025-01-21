@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-type InjectionTopic = {
+export type InjectionTopic = {
   title: string;
   description: string;
-  shortSnippet: string; // Short snippet for each topic
-  color: string; // Background color for hover effects
-  link: string; // Route to navigate
+  shortSnippet: string;
+  color: string; 
+  link: string;
 };
 
 export default function Injection() {

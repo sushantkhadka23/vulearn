@@ -9,7 +9,6 @@ import Home from "../pages/Home";
 import Learn from "../pages/Learn";
 import Labs from "../pages/labs/Labs";
 import Guide from "../pages/guides/Guide";
-import Broken_Auth from "../pages/labs/Broken_Auth";
 import Broken_Access_control from "../pages/labs/Broken_Access_control";
 import CrypotgraphicFailure from "../pages/labs/Cryptographic_Failure";
 import Injection from "../pages/labs/Injection";
@@ -22,6 +21,11 @@ import CommandInjectionLabPage from "../pages/labs/command/CommandInjectionLab";
 import XSSInjectionPage from "../pages/labs/xss/XSSInjectionPage";
 import XSSInjectionLab from "../pages/labs/xss/XssInjectionLab";
 import Tools from "../pages/tools/Tools";
+import IDORLab from "../pages/labs/idor/IdorLab";
+import IDORPage from "../pages/labs/idor/IdorPage";
+import BruteForce from "../pages/labs/broken auth acces/BruteForce";
+import BruteForceLab from "../pages/labs/broken auth acces/BruteForceLab";
+import BrokenAuth from "../pages/labs/Broken_Auth";
 
 
 export default function AppRouter() {
@@ -35,8 +39,16 @@ export default function AppRouter() {
           {/* under learn */}
           <Route path="/learn/labs" element={<Labs />} />
            {/* under labs */}
-           <Route path="/learn/labs/broken-auth" element={<Broken_Auth />} />
+           <Route path="/learn/labs/broken-auth" element={<BrokenAuth />} />
+           <Route path="/learn/labs/broken-auth/brute-force" element={<BruteForce />} />
+           <Route path="/learn/labs/broken-auth/brute-force/lab" element={<BruteForceLab />} />
+
+
            <Route path="/learn/labs/broken-access-control" element={<Broken_Access_control />} />
+           {/* under broken access control */}
+           <Route path="/learn/labs/broken-access-control/idor" element={<IDORPage />} />
+           <Route path="/learn/labs/broken-access-control/idor/lab" element={<IDORLab />} />
+           
            <Route path="/learn/labs/cryptographic-failure" element={<CrypotgraphicFailure />} />
            <Route path="/learn/labs/injection" element={<Injection />} />
            {/* under injection */}
@@ -48,6 +60,8 @@ export default function AppRouter() {
            <Route path="/learn/labs/injection/xss-injection/lab" element={<XSSInjectionLab />} />
            <Route path="/learn/labs/injection/command-injection" element={<CommandInjectionPage />} />
            <Route path="/learn/labs/injection/command-injection/lab" element={<CommandInjectionLabPage />} />
+
+          
 
 
 
