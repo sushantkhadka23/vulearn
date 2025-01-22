@@ -1,78 +1,159 @@
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, Shield, AlertTriangle, CheckCircle } from "lucide-react";
 
 const SQLInjectionPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen bg-bg py-16 px-4">
       <article className="max-w-4xl mx-auto px-4 py-12">
-        {/* Content */}
+        {/* Main Content Card */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-              Understanding SQL Injection
+              SQL Injection Vulnerabilities and Prevention
             </h1>
           </div>
 
-          {/* Main Content */}
+          {/* Introduction */}
           <div className="prose prose-lg max-w-none">
             <p className="text-xl font-lato text-gray-600 mb-6">
-              SQL Injection is one of the most well-known security vulnerabilities. It occurs when an attacker is able to manipulate SQL queries by injecting malicious code into user input fields. This can lead to unauthorized access to a database, data theft, and even complete control of the server.
+              SQL injection attacks occur when malicious SQL code is inserted into application queries, potentially leading to unauthorized data access, modification, or deletion of database contents.
             </p>
 
-            <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
-              How SQL Injection Works
-            </h2>
-            <p className="text-gray-600 font-lato mb-6">
-              SQL Injection attacks typically involve injecting malicious SQL statements into query parameters that the application passes to a SQL database. If input is not properly sanitized, the injected code is executed by the database, allowing attackers to retrieve, modify, or delete sensitive data.
-            </p>
+            {/* Basic SQL Injection Example */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4 flex items-center">
+                <AlertTriangle className="mr-2 text-red-500" />
+                Common SQL Injection Vulnerabilities
+              </h2>
+              <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                <h3 className="font-bold mb-2">Vulnerable Login Query:</h3>
+                <pre className="bg-gray-800 text-white p-4 rounded-md">
+                  {`// Vulnerable Node.js/MySQL login query
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  
+  // VULNERABLE: Direct string concatenation
+  const query = \`SELECT * FROM users 
+    WHERE username = '\${username}' 
+    AND password = '\${password}'\`;
+    
+  // Attacker can input: admin' --
+  // This turns the query into:
+  // SELECT * FROM users WHERE username = 'admin' --' AND password = 'anything'
+  
+  const results = await db.query(query);
+  if (results.length > 0) {
+    res.json({ success: true });
+  }
+});`}
+                </pre>
+              </div>
+              
+              <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                <h3 className="font-bold mb-2">Secure Implementation:</h3>
+                <pre className="bg-gray-800 text-white p-4 rounded-md">
+                  {`// Secure login with prepared statements
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  
+  // SECURE: Using prepared statements
+  const query = 'SELECT * FROM users WHERE username = ? AND password = ?';
+  
+  try {
+    const results = await db.query(query, [username, password]);
+    if (results.length > 0) {
+      res.json({ success: true });
+    } else {
+      res.status(401).json({ error: 'Invalid credentials' });
+    }
+  } catch (error) {
+    // Avoid exposing error details to client
+    console.error('Login error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});`}
+                </pre>
+              </div>
+            </section>
 
-            <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
-              Common Attack Vectors
-            </h2>
-            <p className="text-gray-600 font-lato mb-6">
-              SQL Injection attacks can occur through several vectors, such as:
-              <ul className="list-disc pl-6">
-                <li>Input fields (login, search, feedback forms)</li>
-                <li>URL query parameters</li>
-                <li>Cookies and session variables</li>
-              </ul>
-              These vectors are common areas where user input is not properly sanitized.
-            </p>
+       
+            {/* Prevention Strategies */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4 flex items-center">
+                <Shield className="mr-2 text-blue-500" />
+                SQL Injection Prevention Strategies
+              </h2>
+              <div className="bg-blue-50 p-6 rounded-lg mb-6">
+                <h3 className="font-bold mb-4">Implementation Checklist:</h3>
+                <ul className="list-none space-y-4">
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Always use parameterized queries / prepared statements
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Implement proper input validation and sanitization
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Use ORMs with built-in SQL injection protection
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Apply the principle of least privilege to database users
+                  </li>
+                </ul>
+              </div>
+            </section>
 
-            <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
-              Prevention Techniques
-            </h2>
-            <p className="text-gray-600 font-lato mb-8">
-              To prevent SQL Injection:
-              <ul className="list-disc pl-6">
-                <li>Use parameterized queries (prepared statements)</li>
-                <li>Validate and sanitize user input</li>
-                <li>Implement proper error handling to avoid exposing database errors</li>
-                <li>Use Web Application Firewalls (WAFs) to detect and block malicious traffic</li>
-              </ul>
-            </p>
+            {/* Best Practices */}
+            <section>
+              <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
+                Database Security Best Practices
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="font-bold mb-4">Query Construction</h3>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Never concatenate user input into queries</li>
+                    <li>Use typed parameters for all variables</li>
+                    <li>Implement query timeouts</li>
+                    <li>Use stored procedures when possible</li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="font-bold mb-4">Database Configuration</h3>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Regularly update database software</li>
+                    <li>Use WAF to detect SQL injection attempts</li>
+                    <li>Implement database access monitoring</li>
+                    <li>Regular security audits of queries</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
 
-        {/* Lab Section */}
-        <div className="bg-orange-50 rounded-2xl shadow-lg p-8 border border-orange-100">
+        {/* Interactive Lab Section */}
+        <div className="bg-blue-50 rounded-2xl shadow-lg p-8 border border-blue-100">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0 md:mr-8">
               <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">
-                Practice in Lab
+                SQL Injection Testing Lab
               </h2>
               <p className="text-lg font-lato text-gray-600">
-                Ready to test your knowledge? Try our interactive lab where you can safely practice identifying and exploiting SQL injection vulnerabilities while learning proper mitigation techniques.
+                Practice identifying and preventing SQL injection vulnerabilities in our interactive environment. Learn to write secure queries and implement proper prevention mechanisms.
               </p>
             </div>
             <button
-              onClick={() => navigate("/learn/labs/injection/sql-injection/lab")}
-              className="inline-flex items-center font-mono px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-md whitespace-nowrap"
+            onClick={() => navigate("/learn/labs/injection/sql-injection/lab")}
+              className="inline-flex items-center font-mono px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md whitespace-nowrap"
             >
-              Start Lab
+              Start SQL Lab
               <ArrowRight className="ml-2 w-5 h-5" />
             </button>
           </div>
@@ -83,3 +164,5 @@ const SQLInjectionPage = () => {
 };
 
 export default SQLInjectionPage;
+
+

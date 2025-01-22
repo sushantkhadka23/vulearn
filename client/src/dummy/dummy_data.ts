@@ -19,7 +19,7 @@ const reconTopics: ToolTopics[] = [
     name: "Wappalyzer",
     description:
       "A browser extension and tool for identifying web application technologies, including CMS, frameworks, and more.",
-    githubLink: "https://github.com/ElbertF/Wappalyzer",
+    githubLink: "https://github.com/tunetheweb/wappalyzer",
     webLink: "https://www.wappalyzer.com/",
   },
   {
@@ -89,19 +89,13 @@ const exploitTopics: ToolTopics[] = [
     githubLink: "https://github.com/commixproject/commix",
     webLink: "http://commixproject.com/",
   },
-  {
-    name: "xss-extract",
-    description:
-      "XSS Extract is a simple tool to extract potential XSS vulnerabilities from a website.",
-    githubLink: "https://github.com/xxsxxs/xssextract",
-    webLink: "https://xssextract.github.io/",
-  },
+
   {
     name: "Dalfox",
     description:
       "Dalfox is a fast and powerful XSS parameter scanner that helps identify XSS vulnerabilities in web applications.",
     githubLink: "https://github.com/hahwul/dalfox",
-    webLink: "https://dalfox.dev/",
+    webLink:"https://dalfox.hahwul.com/",
   },
 ];
 

@@ -7,7 +7,7 @@ const topics: InjectionTopic[] = [
     description:
       "Learn how brute force attacks can be used to bypass weak authentication mechanisms and gain unauthorized access to user accounts.",
     shortSnippet: "Understand how attackers exploit weak login systems through brute force attacks.",
-    color: "bg-purple-100 hover:border-purple-500 hover:bg-purple-200",
+    color: "bg-cyan-100 hover:border-cyan-500 hover:bg-cyan-200",
     link: "/learn/labs/broken-auth/brute-force",
   },
 ];

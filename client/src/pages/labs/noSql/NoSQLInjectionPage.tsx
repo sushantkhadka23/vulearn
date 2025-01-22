@@ -1,60 +1,145 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight} from 'lucide-react';
+import { ArrowRight, Shield, AlertTriangle, CheckCircle } from 'lucide-react';
 
 const NoSQLInjectionPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen bg-bg py-16 px-4">
       <article className="max-w-4xl mx-auto px-4 py-12">
-        {/* Content */}
+        {/* Main Content Card */}
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-              Understanding NoSQL Injection
+              NoSQL Injection Vulnerabilities and Prevention
             </h1>
           </div>
 
-          {/* Main Content */}
+          {/* Introduction */}
           <div className="prose prose-lg max-w-none">
             <p className="text-xl font-lato text-gray-600 mb-6">
-              NoSQL Injection is a critical security vulnerability that occurs when malicious users manipulate NoSQL database queries through unsanitized input. This attack can lead to unauthorized data access, authentication bypasses, and potential data breaches.
+              NoSQL Injection attacks occur when malicious input is used to manipulate NoSQL queries, potentially allowing unauthorized access to data, authentication bypasses, or other severe breaches.
             </p>
 
-            <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
-              How NoSQL Injection Works
-            </h2>
-            <p className="text-gray-600 font-lato mb-6">
-              Unlike traditional SQL injection, NoSQL injection exploits the way NoSQL databases handle queries. Attackers can send specially crafted payloads that alter the logical structure of database queries, potentially bypassing authentication mechanisms or accessing unauthorized data.
-            </p>
+            {/* Basic NoSQL Injection Example */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4 flex items-center">
+                <AlertTriangle className="mr-2 text-red-500" />
+                Common NoSQL Injection Vulnerabilities
+              </h2>
+              <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+                <h3 className="font-bold mb-2">Vulnerable Login Query:</h3>
+                <pre className="bg-gray-800 text-white p-4 rounded-md">
+                  {`// Vulnerable Node.js/MongoDB login query
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  
+  // VULNERABLE: Using user input directly in the query
+  const user = await db.collection('users').findOne({
+    username: username,
+    password: password, // Attacker can inject: { "$ne": null }
+  });
+  
+  if (user) {
+    res.json({ success: true });
+  } else {
+    res.status(401).json({ error: 'Invalid credentials' });
+  }
+});`}
+                </pre>
+              </div>
 
-            <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
-              Common Attack Vectors
-            </h2>
-            <p className="text-gray-600 font-lato mb-6">
-              Attackers often exploit NoSQL injection through various means, including:
-              Query parameter manipulation, operator injection ($ne, $gt, etc.), and array injection attacks. Understanding these vectors is crucial for protecting your applications.
-            </p>
+              <div className="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                <h3 className="font-bold mb-2">Secure Implementation:</h3>
+                <pre className="bg-gray-800 text-white p-4 rounded-md">
+                  {`// Secure login with parameterized queries
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  
+  // SECURE: Explicitly check input types and values
+  const user = await db.collection('users').findOne({
+    username: username,
+    password: password,
+  });
 
-            <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
-              Prevention Techniques
-            </h2>
-            <p className="text-gray-600 font-lato mb-8">
-              To prevent NoSQL injection attacks, implement proper input validation, use parameterized queries, and follow the principle of least privilege. Regular security audits and up-to-date security practices are essential for maintaining robust protection.
-            </p>
+  if (user) {
+    res.json({ success: true });
+  } else {
+    res.status(401).json({ error: 'Invalid credentials' });
+  }
+});`}
+                </pre>
+              </div>
+            </section>
+
+            {/* Prevention Strategies */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4 flex items-center">
+                <Shield className="mr-2 text-blue-500" />
+                NoSQL Injection Prevention Strategies
+              </h2>
+              <div className="bg-blue-50 p-6 rounded-lg mb-6">
+                <h3 className="font-bold mb-4">Implementation Checklist:</h3>
+                <ul className="list-none space-y-4">
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Validate and sanitize all user inputs
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Use ObjectIDs for identifying database records instead of user-provided values
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Limit query operations to avoid dangerous operators like `$ne`, `$or`, or `$gt`
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="mr-2 text-green-500" />
+                    Apply the principle of least privilege to database users
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            {/* Best Practices */}
+            <section>
+              <h2 className="text-2xl font-bold font-serif text-gray-900 mb-4">
+                Database Security Best Practices
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="font-bold mb-4">Query Construction</h3>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Never use unsanitized user input in queries</li>
+                    <li>Use libraries or middleware for input validation</li>
+                    <li>Set query timeouts to prevent long-running queries</li>
+                    <li>Limit fields returned in queries to reduce exposure</li>
+                  </ul>
+                </div>
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="font-bold mb-4">Database Configuration</h3>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>Regularly update your database software</li>
+                    <li>Enable query logging and monitoring</li>
+                    <li>Implement rate limiting to prevent brute-force attacks</li>
+                    <li>Perform regular security audits and pen tests</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
 
-        {/* Lab Section */}
+        {/* Interactive Lab Section */}
         <div className="bg-orange-50 rounded-2xl shadow-lg p-8 border border-orange-100">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-6 md:mb-0 md:mr-8">
               <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">
-                Practice in Lab
+                NoSQL Injection Testing Lab
               </h2>
               <p className="text-lg font-lato text-gray-600">
-                Ready to test your knowledge? Try our interactive lab where you can safely practice identifying and exploiting NoSQL injection vulnerabilities while learning proper mitigation techniques.
+                Practice identifying and preventing NoSQL injection vulnerabilities in our interactive lab. Learn to write secure queries and protect your applications.
               </p>
             </div>
             <button
@@ -72,9 +157,3 @@ const NoSQLInjectionPage = () => {
 };
 
 export default NoSQLInjectionPage;
-
-
-
-
-
-
