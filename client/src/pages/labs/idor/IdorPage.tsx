@@ -134,7 +134,7 @@ app.get('/api/users/:id/profile', authenticate, (req, res) => {
               </p>
             </div>
             <button
-              onClick={() => navigate("/learn/labs/idor-testing")}
+              onClick={() => navigate("/learn/labs/broken-access-control/idor/lab")}
               className="inline-flex items-center font-mono px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md whitespace-nowrap"
             >
               Start IDOR Lab

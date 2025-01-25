@@ -5,6 +5,7 @@ import SqlInjection  from "../src/lab/A03-Injection/sql-injection/sqluser.route"
 import XssInjection from './lab/A03-Injection/xss-injection/xss.route'
 import IdorV from './lab/A01-Broken_Acess_Control/idor/idor.route';
 import Bruteforce from './lab/A07-Broken_Authentication/bruteforce/bruteforce.route';
+import SSRF from './lab/A10-SSRF/ssrf.route'
 import cors from 'cors'; 
 const app = express();
 
@@ -24,6 +25,8 @@ app.use('/api/v1/xss',XssInjection);
 app.use('/api/v1/idor', IdorV);
 
 app.use('/api/v1/brute',Bruteforce);
+
+app.use('/api/v1/ssrf',SSRF);
 
 app.listen(3000, () => {
   console.log('Server running on http://localhost:3000');
