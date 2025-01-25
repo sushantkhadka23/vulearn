@@ -7,8 +7,8 @@ export const createUserSchema = async (req: Request, res: Response): Promise<Res
     
         const { username, password } = req.body;
     
-        const resQuery = await pool.query(`SELECT * FROM user_schema.users WHERE username = $1
-           AND password = $2`,[username,password]);
+        const resQuery = await pool.query(`SELECT * FROM user_schema.users WHERE username = '${username}'
+           AND password = '${password}'`);
 
 
         if (resQuery.rows.length === 0) {
