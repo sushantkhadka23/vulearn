@@ -1,4 +1,4 @@
-import { Shield, Lock, Key, Code } from "lucide-react";
+import { Shield, Lock, Key, Code, Globe } from "lucide-react";
 
 type LabsType = {
   title: string;
@@ -46,6 +46,15 @@ const Labs = () => {
       icon: <Code className="w-8 h-8 text-orange-500" />,
       color: "bg-blue-100",
       hoverColor: "hover:border-blue-500 hover:text-blue-500",
+    },
+    {
+      title: "Server-Side Request Forgery (SSRF)",
+      description:
+        "Learn how attackers exploit SSRF vulnerabilities to trick servers into making unauthorized requests. Explore techniques to prevent SSRF, including input validation and network restrictions.",
+      link: "/learn/labs/ssrf",
+      icon: <Globe className="w-8 h-8 text-purple-500" />,
+      color: "bg-purple-100",
+      hoverColor: "hover:border-purple-500 hover:text-purple-500",
     },
   ];
 
