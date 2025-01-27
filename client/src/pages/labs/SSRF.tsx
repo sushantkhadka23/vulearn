@@ -18,7 +18,7 @@ export default function SSRF() {
         "Understand the fundamentals of Server-Side Request Forgery (SSRF) attacks. Learn how attackers manipulate server-side requests to access unauthorized resources.",
       shortSnippet: "Learn the basics of SSRF vulnerabilities and attacks.",
       color: "bg-blue-100 hover:border-blue-500 hover:bg-blue-200",
-      link: "/learn/labs/ssrf/basic-ssrf",
+      link: "/learn/labs/ssrf/topic",
     },
   ];
   

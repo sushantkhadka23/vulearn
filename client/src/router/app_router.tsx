@@ -27,7 +27,8 @@ import BruteForce from "../pages/labs/broken auth acces/BruteForce";
 import BruteForceLab from "../pages/labs/broken auth acces/BruteForceLab";
 import BrokenAuth from "../pages/labs/Broken_Auth";
 import SSRF from "../pages/labs/SSRF";
-import BasicSSRF from "../pages/labs/ssrf/BasicSSRF";
+import SSRFPage from "../pages/labs/ssrf/SSRFPage";
+import BasicSSRFLab from "../pages/labs/ssrf/BasicSSRFLab";
 
 
 export default function AppRouter() {
@@ -54,7 +55,8 @@ export default function AppRouter() {
            <Route path="/learn/labs/cryptographic-failure" element={<CrypotgraphicFailure />} />
            <Route path="/learn/labs/ssrf" element={<SSRF />} />
            {/* under ssrf */}
-           <Route path="learn/labs/ssrf/basic-ssrf" element={<BasicSSRF />} />
+           <Route path="/learn/labs/ssrf/topic/lab" element={<BasicSSRFLab />} />
+           <Route path="/learn/labs/ssrf/topic" element={<SSRFPage />} />
            <Route path="/learn/labs/injection" element={<Injection />} />
            {/* under injection */}
            <Route path="/learn/labs/injection/sql-injection" element={<SQLInjectionPage />} />

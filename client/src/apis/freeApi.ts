@@ -5,6 +5,7 @@ const freeApis = {
   dogApi: "https://dog.ceo/api/breeds/image/random",
   numbersApi: "http://numbersapi.com/random?json",
   programmingJokeApi:"https://sv443.net/jokeapi/v2/joke/Programming",
+  evilInsult:"https://evilinsult.com/generate_insult.php?lang=en&type=json"
 };
 
 export default freeApis;
